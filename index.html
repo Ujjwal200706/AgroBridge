@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <style>
+        @layer base {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overscroll-behavior: none;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e6eeff",
+                        "on-background": "#121c2a",
+                        "secondary": "#7d562d",
+                        "tertiary": "#002d1b",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#414844",
+                        "on-surface": "#121c2a",
+                        "on-secondary-fixed-variant": "#623f18",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed": "#92f7c3",
+                        "tertiary-fixed-dim": "#75daa8",
+                        "secondary-container": "#ffca98",
+                        "on-tertiary-container": "#53b889",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#002114",
+                        "surface-variant": "#d9e3f6",
+                        "inverse-surface": "#27313f",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d0dbed",
+                        "on-primary-container": "#86af99",
+                        "secondary-fixed": "#ffdcbd",
+                        "primary": "#012d1d",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dee9fc",
+                        "inverse-primary": "#a5d0b9",
+                        "surface-bright": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#7a532a",
+                        "background": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#005235",
+                        "secondary-fixed-dim": "#f0bd8b",
+                        "primary-fixed": "#c1ecd4",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#00452c",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "primary-container": "#1b4332",
+                        "surface-container-highest": "#d9e3f6",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "on-secondary-fixed": "#2c1600",
+                        "surface": "#f8f9ff",
+                        "outline": "#717973",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#3f6653",
+                        "outline-variant": "#c1c8c2"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    fontFamily: {
+                        "Inter": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+
+<body
+    class="bg-surface font-['Inter'] text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-tertiary-fixed selection:text-primary">
+    <!-- 1. Full-Height Desktop Layout (No Top Nav Bar) -->
+    <main class="w-full flex-grow flex items-stretch">
+        <div class="w-full grid grid-cols-1 lg:grid-cols-12 min-h-screen">
+            <!-- LEFT HERO SHOWCASE (60% Desktop) -->
+            <div
+                class="relative lg:col-span-7 xl:col-span-7 bg-primary flex flex-col justify-between p-6 lg:p-12 text-on-primary overflow-hidden min-h-[580px] lg:min-h-screen">
+                <!-- Agricultural Field Background Image -->
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-100 hover:scale-105"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1UqtpFTT71INfOt3i2Ak2Gxbuh-Ae2gcxXxoy2XjcilR9z6aHdiY1Ul4Fva7V2T7eKKszKWX0DYftjodXx3tGHSv_vnr251nC572FitWsfapfKM6MUGhNHkFDmeGa8uo-BbinBRoCzJY-mv6Rl6MoHEHYspVqUD4p_uKiVp7pPYVLPgya5HeRXuS9nMixGzquSvhqzGHRynliPWLOAUieub-urA6201xqgY831MCMOJ9HcZmyV6pDcj6mo');">
+                </div>
+                <!-- Gradient Overlays for High Contrast Readability -->
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/80 to-primary/40"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-transparent"></div>
+                <!-- Top Header Area: AgroBridge Brand & Trust Pills -->
+                <div class="relative z-10 flex flex-wrap items-center justify-between gap-4">
+                    <!-- Logo with Wordmark -->
+                    <div
+                        class="flex items-center space-x-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/40">
+                        <img alt="AgroBridge" class="w-9 h-9 object-contain"
+                            src="https://lh3.googleusercontent.com/aida/AEtjO1Wbx7IknnCjj34_YQtdNNENu1wA12pUy3Zxt7VfTjn2-Ye9NaS-QXR-DsbO9FtsWzErf54bhYwN15k_XK7yJ8wXqJi3e-pTK-8Dyjg0xed-ML0seggCsE0YyTTYUW6eglardTbnfjAHbxVH5chBYrFeyB8w0OOnErsPItgDTs5k9EeLLXB0zxCB-qMRv-Klmr18gtSpPcmXwZjFmErVfnA5SnOIuXhVlTXdKVwUtgGbc88an31K2dX3zw" />
+                        <div>
+                            <div class="flex items-center space-x-1.5">
+                                <span class="text-xl font-extrabold text-primary tracking-tight">AgroBridge</span>
+                                <span
+                                    class="bg-primary text-white text-[9px] font-bold px-1.5 py-0.5 rounded tracking-wider uppercase">Portal</span>
+                            </div>
+                            <p class="text-[10px] text-on-surface-variant font-semibold tracking-wide">
+                                Direct Mandi &amp; Consumer Network
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Telemetry & Verification Chips -->
+                    <div class="flex flex-wrap items-center gap-2">
+                        <div
+                            class="inline-flex items-center space-x-2 bg-primary-container/85 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full shadow-md text-xs font-semibold text-tertiary-fixed">
+                            <span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span>
+                            <span id="hero-badge-telemetry">Live Agri-Stack &amp; Consumer Hub</span>
+                        </div>
+                        <div
+                            class="hidden sm:inline-flex items-center space-x-1.5 bg-white/15 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-medium border border-white/20 text-white">
+                            <span class="material-symbols-outlined text-tertiary-fixed text-base"
+                                style="font-variation-settings: 'FILL' 1;">verified</span>
+                            <span>e-NAM &amp; ICAR Integrated</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Main Content & Badges -->
+                <div class="relative z-10 my-auto py-8 lg:py-12 max-w-2xl space-y-6">
+                    <!-- Dual Value Badges -->
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <span
+                            class="inline-flex items-center space-x-1.5 bg-secondary-container/95 text-on-secondary-container px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                            <span class="material-symbols-outlined text-sm">hub</span>
+                            <span id="hero-badge-1">Connecting Farmers &amp; Direct Consumers</span>
+                        </span>
+                        <span
+                            class="inline-flex items-center space-x-1.5 bg-emerald-950/80 border border-emerald-400/40 text-emerald-300 px-3 py-1 rounded-full text-xs font-semibold">
+                            <span class="material-symbols-outlined text-sm text-tertiary-fixed">sell</span>
+                            <span id="hero-badge-2">Zero Middlemen &amp; Fair Price</span>
+                        </span>
+                    </div>
+                    <!-- Headline & Subtitle -->
+                    <div class="space-y-4">
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight drop-shadow-md"
+                            id="hero-title">
+                            Bridging Indian Farmers Directly to Consumers &amp; Mandis
+                        </h1>
+                        <p class="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl"
+                            id="hero-subtitle">
+                            Empowering farmers with direct market rates and guaranteed MSP, while delivering 100%
+                            farm-traceable produce directly to consumers and bulk buyers.
+                        </p>
+                    </div>
+                    <!-- 3 Dynamic Metric Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                        <!-- Card 1: Mandi Price -->
+                        <div
+                            class="bg-primary-container/80 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5">
+                            <div class="flex items-center justify-between text-secondary-fixed">
+                                <span class="material-symbols-outlined text-xl">analytics</span>
+                                <span
+                                    class="text-[11px] font-bold bg-emerald-900/80 text-emerald-300 px-1.5 py-0.5 rounded">↑
+                                    4.2%</span>
+                            </div>
+                            <p class="text-xs text-surface-variant font-medium mt-2" id="metric-1-label">Wheat
+                                (Sharbati) Mandi</p>
+                            <p class="text-xl font-extrabold text-white mt-0.5">₹2,840<span
+                                    class="text-xs font-normal text-white/70"> / qtl</span></p>
+                        </div>
+                        <!-- Card 2: Consumer Deliveries -->
+                        <div
+                            class="bg-primary-container/80 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5">
+                            <div class="flex items-center justify-between text-tertiary-fixed">
+                                <span class="material-symbols-outlined text-xl">local_shipping</span>
+                                <span
+                                    class="text-[11px] font-bold bg-teal-900/80 text-teal-200 px-1.5 py-0.5 rounded">Farm-Fresh</span>
+                            </div>
+                            <p class="text-xs text-surface-variant font-medium mt-2" id="metric-2-label">Direct Consumer
+                                Deliveries</p>
+                            <p class="text-xl font-extrabold text-white mt-0.5" id="metric-2-val">100% Traceable</p>
+                        </div>
+                        <!-- Card 3: Middleman Commission -->
+                        <div
+                            class="bg-primary-container/80 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5">
+                            <div class="flex items-center justify-between text-secondary-container">
+                                <span class="material-symbols-outlined text-xl"
+                                    style="font-variation-settings: 'FILL' 1;">price_check</span>
+                                <span
+                                    class="text-[11px] font-bold bg-amber-900/80 text-amber-200 px-1.5 py-0.5 rounded">Fair
+                                    Trade</span>
+                            </div>
+                            <p class="text-xs text-surface-variant font-medium mt-2" id="metric-3-label">Middleman
+                                Commission</p>
+                            <p class="text-xl font-extrabold text-white mt-0.5">0% Cut</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bottom Verified Footer Strip in Showcase -->
+                <div
+                    class="relative z-10 pt-4 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs text-surface-variant">
+                    <div class="flex items-center space-x-2">
+                        <span class="material-symbols-outlined text-tertiary-fixed text-lg"
+                            style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                        <span id="hero-trust-label">Secured with Government e-Kisan Authentication &amp;
+                            DigiLocker</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-white/80">⚡ 24/7 Live Mandi Ticker</span>
+                        <span class="text-white/80">🔒 256-bit Encrypted</span>
+                    </div>
+                </div>
+            </div>
+            <!-- RIGHT AUTHENTICATION CONSOLE (40% Desktop) -->
+            <div
+                class="lg:col-span-5 xl:col-span-5 bg-surface-container-lowest flex flex-col justify-between p-6 lg:p-12 border-l border-surface-container overflow-y-auto">
+                <div class="max-w-md w-full mx-auto my-auto space-y-6">
+                    <!-- Header Bar: Portal Identity + Language Switcher -->
+                    <div class="flex items-center justify-between pb-3 border-b border-surface-container">
+                        <div class="flex items-center space-x-2 text-primary font-bold text-sm">
+                            <span class="material-symbols-outlined text-primary text-xl"
+                                id="role-icon-header">nest_eco_leaf</span>
+                            <span id="card-header-badge">Kisan Portal Access</span>
+                        </div>
+                        <!-- Language Selector -->
+                        <div aria-label="Language Selector"
+                            class="inline-flex bg-surface-container p-1 rounded-full border border-surface-container-high"
+                            role="group">
+                            <button aria-pressed="true"
+                                class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-150 bg-primary text-on-primary shadow-xs"
+                                id="btn-lang-en" onclick="switchLanguage('en')" type="button">
+                                English
+                            </button>
+                            <button aria-pressed="false"
+                                class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-150 text-on-surface-variant hover:text-on-surface"
+                                id="btn-lang-hi" onclick="switchLanguage('hi')" type="button">
+                                हिन्दी
+                            </button>
+                        </div>
+                    </div>
+                    <!-- DUAL-ROLE TAB SELECTOR: Farmer vs Consumer & Buyer -->
+                    <div
+                        class="bg-surface-container-low p-1.5 rounded-2xl border border-surface-container-high shadow-xs">
+                        <div class="grid grid-cols-2 gap-1.5" role="tablist">
+                            <!-- Tab 1: Farmer -->
+                            <button aria-selected="true"
+                                class="flex items-center justify-center space-x-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 bg-primary text-on-primary shadow-sm"
+                                id="role-tab-farmer" onclick="setRole('farmer')" role="tab" type="button">
+                                <span class="material-symbols-outlined text-lg">agriculture</span>
+                                <span id="tab-farmer-label">Farmer / किसान</span>
+                            </button>
+                            <!-- Tab 2: Consumer & Buyer -->
+                            <button aria-selected="false"
+                                class="flex items-center justify-center space-x-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 text-on-surface-variant hover:text-primary hover:bg-surface-container"
+                                id="role-tab-consumer" onclick="setRole('consumer')" role="tab" type="button">
+                                <span class="material-symbols-outlined text-lg">shopping_basket</span>
+                                <span id="tab-consumer-label">Consumer &amp; Buyer / उपभोक्ता</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Role Badges & Status Announcement -->
+                    <div class="flex items-center justify-between bg-emerald-50 border border-emerald-200/80 px-3.5 py-2 rounded-xl text-xs text-primary font-semibold"
+                        id="role-badge-container">
+                        <div class="flex items-center space-x-2">
+                            <span class="material-symbols-outlined text-base text-primary"
+                                id="role-badge-icon">verified</span>
+                            <span id="role-badge-text">Direct Mandi &amp; MSP Support Activated</span>
+                        </div>
+                        <span
+                            class="bg-emerald-200 text-primary text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-md"
+                            id="role-badge-tag">MSP Active</span>
+                    </div>
+                    <!-- Title & Subtitle -->
+                    <div class="space-y-1">
+                        <h2 class="text-2xl lg:text-3xl text-on-surface font-extrabold tracking-tight" id="login-title">
+                            Welcome to AgroBridge
+                        </h2>
+                        <p class="text-sm text-on-surface-variant" id="login-subtitle">
+                            Sign in to access your digital farm dashboard, mandi rates, and crop advisory.
+                        </p>
+                    </div>
+                    <!-- Main Interactive Form -->
+                    <form class="space-y-4" id="agro-login-form" novalidate="" onsubmit="handleFormSubmit(event)">
+                        <!-- Input 1: User ID / Mobile -->
+                        <div class="space-y-1.5">
+                            <label class="block text-xs font-bold text-on-surface" for="login-identifier"
+                                id="label-identifier">
+                                Kisan ID / Registered Mobile Number
+                            </label>
+                            <div class="relative flex items-center">
+                                <span
+                                    class="material-symbols-outlined absolute left-3.5 text-on-surface-variant/70 text-xl pointer-events-none"
+                                    id="input-icon-user">
+                                    phone_android
+                                </span>
+                                <input
+                                    class="w-full pl-11 pr-4 py-3 bg-surface-container-low border border-surface-container-high text-on-surface rounded-xl text-sm focus:bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant/50 shadow-xs"
+                                    id="login-identifier" placeholder="e.g. 9876543210 or Farmer ID" required=""
+                                    type="text" />
+                            </div>
+                        </div>
+                        <!-- Input 2: Password / PIN -->
+                        <div class="space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <label class="block text-xs font-bold text-on-surface" for="login-password"
+                                    id="label-password">
+                                    Security PIN / Password
+                                </label>
+                                <a class="text-xs text-secondary font-semibold hover:text-primary transition-colors"
+                                    href="#" id="link-forgot">
+                                    Forgot PIN?
+                                </a>
+                            </div>
+                            <div class="relative flex items-center">
+                                <span
+                                    class="material-symbols-outlined absolute left-3.5 text-on-surface-variant/70 text-xl pointer-events-none">
+                                    lock
+                                </span>
+                                <input
+                                    class="w-full pl-11 pr-11 py-3 bg-surface-container-low border border-surface-container-high text-on-surface rounded-xl text-sm focus:bg-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant/50 shadow-xs"
+                                    id="login-password" placeholder="Enter 4-6 digit PIN or password" required=""
+                                    type="password" />
+                                <button aria-label="Toggle password view"
+                                    class="absolute right-3.5 text-on-surface-variant hover:text-on-surface focus:outline-none p-1"
+                                    onclick="togglePasswordVisibility()" type="button">
+                                    <span class="material-symbols-outlined text-xl" id="pwd-eye-icon">visibility</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Remember & Security Pill -->
+                        <div class="flex items-center justify-between pt-1">
+                            <label class="flex items-center space-x-2.5 cursor-pointer select-none">
+                                <input
+                                    class="w-4 h-4 rounded text-primary focus:ring-primary/20 border-surface-container-highest bg-surface-container-low"
+                                    id="remember-me" type="checkbox" />
+                                <span class="text-xs text-on-surface-variant font-medium" id="label-remember">
+                                    Remember this device
+                                </span>
+                            </label>
+                            <span
+                                class="inline-flex items-center text-xs text-primary font-semibold bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                                <span class="material-symbols-outlined text-[13px] mr-1">verified_user</span> 256-bit
+                                SSL
+                            </span>
+                        </div>
+                        <!-- Primary Submit Button -->
+                        <button
+                            class="w-full flex items-center justify-center space-x-2 bg-primary text-on-primary py-3.5 px-6 rounded-xl text-sm font-bold hover:bg-tertiary-container transition-all duration-200 shadow-md active:scale-[0.99] cursor-pointer"
+                            id="btn-submit" onclick="openDashboard()" type="button">
+                            <span id="btn-submit-text">Sign In to Portal</span>
+                            <span class="material-symbols-outlined text-xl" id="btn-submit-icon">arrow_forward</span>
+                            <div class="hidden animate-spin h-5 w-5 border-2 border-on-primary border-t-transparent rounded-full"
+                                id="btn-submit-spinner"></div>
+                        </button>
+                    </form>
+                    <!-- Divider -->
+                    <div class="relative my-3 text-center">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full bg-surface-container-high h-[1px]"></div>
+                        </div>
+                        <span
+                            class="relative bg-surface-container-lowest px-3 text-xs text-on-surface-variant uppercase tracking-wider font-semibold"
+                            id="divider-text">
+                            or instant login
+                        </span>
+                    </div>
+                    <!-- Instant OTP Action Button -->
+                    <button
+                        class="w-full flex items-center justify-center space-x-2 bg-surface-container-low hover:bg-surface-container text-primary border border-surface-container-high py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-150 shadow-xs cursor-pointer"
+                        onclick="handleOtpClick()" type="button">
+                        <span class="material-symbols-outlined text-xl text-secondary">sms</span>
+                        <span id="btn-otp-text">Login with Mobile OTP (Instant)</span>
+                    </button>
+                    <!-- Dynamic Role Context Box: Farmer Helpline or Consumer Buyer Protection -->
+                    <div class="bg-gradient-to-r from-emerald-50/80 to-surface-container-low border border-emerald-200/60 rounded-xl p-4 flex items-center justify-between text-on-surface-variant shadow-xs"
+                        id="dynamic-support-card">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-primary flex items-center justify-center shrink-0"
+                                id="support-icon-wrapper">
+                                <span class="material-symbols-outlined text-2xl" id="support-icon">support_agent</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-on-surface" id="support-title">
+                                    Need Dial Support? Kisan Call Center
+                                </p>
+                                <p class="text-xs text-primary font-bold mt-0.5" id="support-sub">
+                                    Toll Free: xxxxx-xxxxx (6 AM - 10 PM)
+                                </p>
+                            </div>
+                        </div>
+                        <a class="inline-flex items-center space-x-1 bg-primary text-on-primary px-3.5 py-1.5 rounded-lg text-xs font-bold shadow-xs hover:bg-tertiary-container transition-colors shrink-0"
+                            href="tel:18001801551" id="support-action-btn">
+                            <span id="support-action-text">Call Now</span>
+                        </a>
+                    </div>
+                    <!-- Microcopy Notice -->
+                    <div
+                        class="text-center text-xs text-on-surface-variant pt-2 border-t border-surface-container max-w-md mx-auto w-full">
+                        <p id="footer-microcopy">
+                            AgroBridge is an Open Digital Agriculture &amp; Direct Consumer Network compliant with ICAR
+                            &amp; PM-KISAN standards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 2. Clean National Agritech Portal Footer -->
+    <footer class="w-full bg-surface-container-lowest border-t border-surface-container-high py-5">
+        <div
+            class="max-w-[1720px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+            <!-- Brand Copyright & Government Compliance -->
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <span class="font-bold text-primary">AgroBridge Kisan Portal © 2025</span>
+                <span class="hidden md:inline text-surface-container-highest">•</span>
+                <span id="footer-dept-text">Ministry of Agriculture &amp; Farmers Welfare Integrated Interface</span>
+            </div>
+            <!-- Quick National Agritech Links -->
+            <div class="flex flex-wrap items-center gap-4 sm:gap-6 font-medium">
+                <a class="hover:text-primary transition-colors" href="#" id="fl-enam">e-NAM APMC Directory</a>
+                <a class="hover:text-primary transition-colors" href="#" id="fl-soil">Soil Health Card</a>
+                <a class="hover:text-primary transition-colors" href="#" id="fl-bima">Fasal Bima (PMFBY)</a>
+                <a class="hover:text-primary transition-colors" href="#" id="fl-kisan">PM-KISAN Portal</a>
+                <a class="hover:text-primary transition-colors" href="#" id="fl-privacy">Privacy Policy</a>
+                <a class="hover:text-primary transition-colors" href="#" id="fl-terms">Terms of Use</a>
+            </div>
+            <!-- Regional Helpline Indicator -->
+            <div class="flex items-center space-x-2 text-primary font-semibold">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="footer-lang-count">22 Indian Languages Supported</span>
+            </div>
+        </div>
+    </footer>
+    <!-- Interactive State Script for Language & Dual-Role Switching -->
+    <script>
+        let currentLang = 'en';
+        let currentRole = 'farmer'; // 'farmer' or 'consumer'
+
+        const content = {
+            en: {
+                heroTelemetry: 'Live Agri-Stack & Consumer Hub',
+                heroBadge1: 'Connecting Farmers & Direct Consumers',
+                heroBadge2: 'Zero Middlemen & Fair Price',
+                heroTitle: 'Bridging Indian Farmers Directly to Consumers & Mandis',
+                heroSubtitle: 'Empowering farmers with direct market rates and guaranteed MSP, while delivering 100% farm-traceable produce directly to consumers and bulk buyers.',
+                metric1Label: 'Wheat (Sharbati) Mandi',
+                metric2Label: 'Direct Consumer Deliveries',
+                metric2Val: '100% Traceable',
+                metric3Label: 'Middleman Commission',
+                heroTrust: 'Secured with Government e-Kisan Authentication & DigiLocker',
+
+                farmerTab: 'Farmer / किसान',
+                consumerTab: 'Consumer & Buyer / उपभोक्ता',
+                farmerHeaderBadge: 'Kisan Portal Access',
+                consumerHeaderBadge: 'Buyer & Consumer Access',
+
+                farmerLoginTitle: 'Welcome Farmer to AgroBridge',
+                farmerLoginSub: 'Sign in to access your digital farm dashboard, mandi rates, and crop advisory.',
+                consumerLoginTitle: 'Welcome Consumer & Buyer',
+                consumerLoginSub: 'Sign in to buy directly from verified farms, track orders, and view freshness certs.',
+
+                farmerIdLabel: 'Kisan ID / Registered Mobile Number',
+                farmerIdPh: 'e.g. 9876543210 or Farmer ID',
+                consumerIdLabel: 'Mobile Number / Registered Email',
+                consumerIdPh: 'e.g. 9876543210 or name@domain.com',
+
+                farmerPwdLabel: 'Security PIN / Password',
+                farmerForgot: 'Forgot PIN?',
+                consumerPwdLabel: 'Account Password',
+                consumerForgot: 'Forgot Password?',
+
+                rememberMe: 'Remember this device',
+                signInBtn: 'Sign In to Portal',
+                divider: 'or instant login',
+                farmerOtpBtn: 'Login with Mobile OTP (Instant)',
+                consumerOtpBtn: 'Login with OTP / Magic Link',
+
+                farmerBadgeText: 'Direct Mandi & MSP Support Activated',
+                farmerBadgeTag: 'MSP Active',
+                consumerBadgeText: 'Direct Farm Fresh & 100% Traceable',
+                consumerBadgeTag: 'Buyer Protection',
+
+                farmerSupportTitle: 'Need Dial Support? Kisan Call Center',
+                farmerSupportSub: 'Toll Free: xxxxx-xxxxx (6 AM - 10 PM)',
+                farmerSupportBtn: 'Call Now',
+
+                consumerSupportTitle: 'Consumer Help & Bulk Orders Assistance',
+                consumerSupportSub: 'Priority Support: xxxxx-xxxxx (24x7)',
+                consumerSupportBtn: 'Chat Support',
+
+                microcopy: 'AgroBridge is an Open Digital Agriculture & Direct Consumer Network compliant with ICAR & PM-KISAN standards.',
+                footerDept: 'Ministry of Agriculture & Farmers Welfare Integrated Interface',
+                footerLang: '22 Indian Languages Supported'
+            },
+            hi: {
+                heroTelemetry: 'सक्रिय एग्री-स्टैक एवं उपभोक्ता केंद्र',
+                heroBadge1: 'किसानों और सीधे उपभोक्ताओं का संगम',
+                heroBadge2: 'शून्य बिचौलिया • पारदर्शी भाव',
+                heroTitle: 'भारतीय किसानों को सीधे उपभोक्ताओं और मंडियों से जोड़ना',
+                heroSubtitle: 'किसानों को सीधे बाजार दर और सुनिश्चित MSP प्रदान करना, तथा उपभोक्ताओं को खेत से 100% शुद्ध और पारदर्शी उपज उपलब्ध कराना।',
+                metric1Label: 'गेहूं (शरबती) मंडी भाव',
+                metric2Label: 'सीधी उपभोक्ता आपूर्ति',
+                metric2Val: '100% प्रमाणित',
+                metric3Label: 'बिचौलिया कमीशन',
+                heroTrust: 'सरकारी ई-किसान प्रमाणीकरण एवं डिजिलॉकर द्वारा सुरक्षित',
+
+                farmerTab: 'किसान / Farmer',
+                consumerTab: 'उपभोक्ता एवं खरीदार',
+                farmerHeaderBadge: 'किसान पोर्टल प्रवेश',
+                consumerHeaderBadge: 'उपभोक्ता व खरीदार प्रवेश',
+
+                farmerLoginTitle: 'एग्रोब्रिज किसान पोर्टल में स्वागत है',
+                farmerLoginSub: 'अपने डिजिटल फार्म डैशबोर्ड, मंडी भाव और फसल सलाह के लिए लॉगिन करें।',
+                consumerLoginTitle: 'एग्रोब्रिज उपभोक्ता पोर्टल में स्वागत है',
+                consumerLoginSub: 'सीधे खेतों से ताजा उपज खरीदने, ऑर्डर ट्रैक करने और गुणवत्ता जांचने के लिए प्रवेश करें।',
+
+                farmerIdLabel: 'किसान आईडी / पंजीकृत मोबाइल नंबर',
+                farmerIdPh: 'उदा. 9876543210 अथवा किसान आईडी',
+                consumerIdLabel: 'मोबाइल नंबर अथवा पंजीकृत ईमेल',
+                consumerIdPh: 'उदा. 9876543210 अथवा name@domain.com',
+
+                farmerPwdLabel: 'सुरक्षा पिन / पासवर्ड',
+                farmerForgot: 'पिन भूल गए?',
+                consumerPwdLabel: 'पासवर्ड',
+                consumerForgot: 'पासवर्ड भूल गए?',
+
+                rememberMe: 'मुझे इस डिवाइस पर याद रखें',
+                signInBtn: 'पोर्टल में प्रवेश करें',
+                divider: 'अथवा त्वरित लॉगिन',
+                farmerOtpBtn: 'मोबाइल ओटीपी से लॉगिन करें (त्वरित)',
+                consumerOtpBtn: 'ओटीपी / मैजिक लिंक से लॉगिन',
+
+                farmerBadgeText: 'सीधा मंडी भाव एवं एमएसपी समर्थन सक्रिय',
+                farmerBadgeTag: 'MSP सक्रिय',
+                consumerBadgeText: 'सीधा खेत से ताजा • 100% गुणवत्ता सुरक्षा',
+                consumerBadgeTag: 'उपभोक्ता सुरक्षा',
+
+                farmerSupportTitle: 'क्षेत्रीय भाषा में मदद चाहिए? किसान कॉल सेंटर',
+                farmerSupportSub: 'टोल-फ्री: xxxxx-xxxxx (प्रातः 6 से रात्रि 10)',
+                farmerSupportBtn: 'कॉल करें',
+
+                consumerSupportTitle: 'उपभोक्ता सहायता एवं थोक आर्डर पूछताछ',
+                consumerSupportSub: 'प्राथमिकता सहायता: 1800-180-9999 (24x7)',
+                consumerSupportBtn: 'मदद प्राप्त करें',
+
+                microcopy: 'एग्रोब्रिज एक खुला डिजिटल कृषि एवं उपभोक्ता मंच है जो भाकृअनुप एवं पीएम-किसान मानकों के अनुरूप है।',
+                footerDept: 'कृषि एवं किसान कल्याण मंत्रालय एकीकृत इंटरफेस',
+                footerLang: '22 भारतीय भाषाओं में सहायता उपलब्ध'
+            }
+        };
+
+        function openDashboard() {
+            if (currentRole === 'farmer') {
+                window.location.href = 'farmer-portal.html';
+            } else if (currentRole === 'consumer') {
+                window.location.href = 'consumer-portal.html';
+            }
+        }
+
+        function updateView() {
+            const t = content[currentLang];
+
+            // Hero Updates
+            document.getElementById('hero-badge-telemetry').textContent = t.heroTelemetry;
+            document.getElementById('hero-badge-1').textContent = t.heroBadge1;
+            document.getElementById('hero-badge-2').textContent = t.heroBadge2;
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.getElementById('metric-1-label').textContent = t.metric1Label;
+            document.getElementById('metric-2-label').textContent = t.metric2Label;
+            document.getElementById('metric-2-val').textContent = t.metric2Val;
+            document.getElementById('metric-3-label').textContent = t.metric3Label;
+            document.getElementById('hero-trust-label').textContent = t.heroTrust;
+
+            // Tabs
+            document.getElementById('tab-farmer-label').textContent = t.farmerTab;
+            document.getElementById('tab-consumer-label').textContent = t.consumerTab;
+
+            // Role-dependent fields
+            if (currentRole === 'farmer') {
+                document.getElementById('card-header-badge').textContent = t.farmerHeaderBadge;
+                document.getElementById('role-icon-header').textContent = 'nest_eco_leaf';
+                document.getElementById('login-title').textContent = t.farmerLoginTitle;
+                document.getElementById('login-subtitle').textContent = t.farmerLoginSub;
+                document.getElementById('label-identifier').textContent = t.farmerIdLabel;
+                document.getElementById('login-identifier').placeholder = t.farmerIdPh;
+                document.getElementById('label-password').textContent = t.farmerPwdLabel;
+                document.getElementById('link-forgot').textContent = t.farmerForgot;
+                document.getElementById('btn-otp-text').textContent = t.farmerOtpBtn;
+                document.getElementById('role-badge-text').textContent = t.farmerBadgeText;
+                document.getElementById('role-badge-tag').textContent = t.farmerBadgeTag;
+                document.getElementById('role-badge-icon').textContent = 'verified';
+
+                // Support Card
+                document.getElementById('support-icon').textContent = 'support_agent';
+                document.getElementById('support-title').textContent = t.farmerSupportTitle;
+                document.getElementById('support-sub').textContent = t.farmerSupportSub;
+                document.getElementById('support-action-text').textContent = t.farmerSupportBtn;
+                document.getElementById('support-action-btn').href = 'tel:18001801551';
+            } else {
+                document.getElementById('card-header-badge').textContent = t.consumerHeaderBadge;
+                document.getElementById('role-icon-header').textContent = 'shopping_bag';
+                document.getElementById('login-title').textContent = t.consumerLoginTitle;
+                document.getElementById('login-subtitle').textContent = t.consumerLoginSub;
+                document.getElementById('label-identifier').textContent = t.consumerIdLabel;
+                document.getElementById('login-identifier').placeholder = t.consumerIdPh;
+                document.getElementById('label-password').textContent = t.consumerPwdLabel;
+                document.getElementById('link-forgot').textContent = t.consumerForgot;
+                document.getElementById('btn-otp-text').textContent = t.consumerOtpBtn;
+                document.getElementById('role-badge-text').textContent = t.consumerBadgeText;
+                document.getElementById('role-badge-tag').textContent = t.consumerBadgeTag;
+                document.getElementById('role-badge-icon').textContent = 'local_shipping';
+
+                // Support Card
+                document.getElementById('support-icon').textContent = 'headset_mic';
+                document.getElementById('support-title').textContent = t.consumerSupportTitle;
+                document.getElementById('support-sub').textContent = t.consumerSupportSub;
+                document.getElementById('support-action-text').textContent = t.consumerSupportBtn;
+                document.getElementById('support-action-btn').href = 'tel:18001809999';
+            }
+
+            document.getElementById('label-remember').textContent = t.rememberMe;
+            document.getElementById('btn-submit-text').textContent = t.signInBtn;
+            document.getElementById('divider-text').textContent = t.divider;
+            document.getElementById('footer-microcopy').textContent = t.microcopy;
+            document.getElementById('footer-dept-text').textContent = t.footerDept;
+            document.getElementById('footer-lang-count').textContent = t.footerLang;
+        }
+
+        function setRole(role) {
+            currentRole = role;
+            const tabFarmer = document.getElementById('role-tab-farmer');
+            const tabConsumer = document.getElementById('role-tab-consumer');
+            const userIcon = document.getElementById('input-icon-user');
+
+            if (role === 'farmer') {
+                tabFarmer.className = "flex items-center justify-center space-x-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 bg-primary text-on-primary shadow-sm";
+                tabFarmer.setAttribute('aria-selected', 'true');
+                tabConsumer.className = "flex items-center justify-center space-x-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 text-on-surface-variant hover:text-primary hover:bg-surface-container";
+                tabConsumer.setAttribute('aria-selected', 'false');
+                userIcon.textContent = 'phone_android';
+            } else {
+                tabConsumer.className = "flex items-center justify-center space-x-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 bg-primary text-on-primary shadow-sm";
+                tabConsumer.setAttribute('aria-selected', 'true');
+                tabFarmer.className = "flex items-center justify-center space-x-2 py-3 px-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 text-on-surface-variant hover:text-primary hover:bg-surface-container";
+                tabFarmer.setAttribute('aria-selected', 'false');
+                userIcon.textContent = 'person';
+            }
+
+            updateView();
+        }
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const btnEn = document.getElementById('btn-lang-en');
+            const btnHi = document.getElementById('btn-lang-hi');
+
+            if (lang === 'en') {
+                btnEn.className = 'px-3 py-1 rounded-full text-xs font-bold transition-all duration-150 bg-primary text-on-primary shadow-xs';
+                btnEn.setAttribute('aria-pressed', 'true');
+                btnHi.className = 'px-3 py-1 rounded-full text-xs font-bold transition-all duration-150 text-on-surface-variant hover:text-on-surface';
+                btnHi.setAttribute('aria-pressed', 'false');
+            } else {
+                btnHi.className = 'px-3 py-1 rounded-full text-xs font-bold transition-all duration-150 bg-primary text-on-primary shadow-xs';
+                btnHi.setAttribute('aria-pressed', 'true');
+                btnEn.className = 'px-3 py-1 rounded-full text-xs font-bold transition-all duration-150 text-on-surface-variant hover:text-on-surface';
+                btnEn.setAttribute('aria-pressed', 'false');
+            }
+
+            updateView();
+        }
+
+        function togglePasswordVisibility() {
+            const pwdInput = document.getElementById('login-password');
+            const icon = document.getElementById('pwd-eye-icon');
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                pwdInput.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            openDashboard();
+        }
+
+        function handleOtpClick() {
+            const input = document.getElementById('login-identifier');
+            input.focus();
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const originalPh = input.placeholder;
+            input.placeholder = currentLang === 'hi' ? 'कृपया अपना 10 अंकों का मोबाइल नंबर दर्ज करें' : 'Enter 10-digit mobile number for OTP';
+            setTimeout(() => {
+                input.placeholder = originalPh;
+            }, 3500);
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateView();
+        });
+    </script>
+</body>
+
+</html>

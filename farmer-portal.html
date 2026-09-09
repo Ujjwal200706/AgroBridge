@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+    <style>
+        @layer base {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overscroll-behavior: none;
+            }
+
+            main>:first-child {
+                margin-top: 0 !important;
+            }
+
+            main>:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+        id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-container": "#53b889", "on-secondary": "#ffffff", "surface-dim": "#d0dbed", "surface-container-lowest": "#ffffff", "inverse-primary": "#a5d0b9", "on-primary": "#ffffff", "error": "#ba1a1a", "primary": "#012d1d", "primary-fixed": "#c1ecd4", "secondary": "#7d562d", "surface-tint": "#3f6653", "on-tertiary-fixed": "#002113", "inverse-surface": "#27313f", "on-secondary-container": "#7a532a", "tertiary-fixed": "#92f7c3", "surface-container-high": "#dee9fc", "tertiary": "#002d1b", "on-surface": "#121c2a", "on-tertiary": "#ffffff", "primary-container": "#1b4332", "tertiary-fixed-dim": "#75daa8", "secondary-container": "#ffca98", "on-secondary-fixed-variant": "#623f18", "on-secondary-fixed": "#2c1600", "on-background": "#121c2a", "on-tertiary-fixed-variant": "#005235", "primary-fixed-dim": "#a5d0b9", "outline": "#717973", "on-error-container": "#93000a", "on-primary-container": "#86af99", "surface-container": "#e6eeff", "inverse-on-surface": "#eaf1ff", "on-surface-variant": "#414844", "error-container": "#ffdad6", "on-primary-fixed-variant": "#274e3d", "surface-container-low": "#eff4ff", "tertiary-container": "#00452c", "secondary-fixed-dim": "#f0bd8b", "surface-variant": "#d9e3f6", "surface": "#f8f9ff", "surface-container-highest": "#d9e3f6", "on-primary-fixed": "#002114", "outline-variant": "#c1c8c2", "surface-bright": "#f8f9ff", "secondary-fixed": "#ffdcbd", "on-error": "#ffffff", "background": "#f8f9ff" }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }, spacing: { "space-xs": "0.25rem", "gutter-mobile": "1rem", "space-md": "1rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-tablet": "1.5rem", "gutter-desktop": "2rem", "space-xl": "2rem", "space-xxs": "0.125rem", "space-2xl": "3rem", "margin-desktop": "3rem", "space-3xl": "4rem", "margin-tablet": "2rem", "margin-mobile": "1rem" }, fontFamily: { "headline-xl-mobile": ["Inter"], "headline-xl": ["Inter"], "title-md": ["Inter"], "body-sm": ["Inter"], "headline-lg": ["Inter"], "label-lg": ["Inter"], "display-lg": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Inter"], "body-md": ["Inter"], "display-lg-mobile": ["Inter"], "headline-md": ["Inter"], "numeric-data": ["Inter"] }, fontSize: { "headline-xl-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "-0.015em", fontWeight: "700" }], "title-md": ["18px", { lineHeight: "26px", letterSpacing: "0", fontWeight: "500" }], "body-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "400" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "600" }], "display-lg": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "400" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.03em", fontWeight: "600" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "400" }], "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.005em", fontWeight: "600" }], "numeric-data": ["15px", { lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "500" }] } } } };</script>
+</head>
+
+<body class="bg-background font-body-md text-on-surface">
+    <main class="w-full bg-background">
+        <div class="flex flex-col w-full">
+            <!-- BILINGUAL PAGE HEADER STRIP -->
+            <section
+                class="w-full bg-surface-container-low py-space-md px-gutter-mobile md:px-gutter-desktop shadow-sm">
+                <div
+                    class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+                    <div class="flex items-center gap-space-md">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+                            <span class="material-symbols-outlined text-2xl">balance</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-space-xs">
+                                <span class="font-headline-sm text-headline-sm text-primary tracking-tight"
+                                    data-lang="en">Direct Crop Sale &amp; Profit Calculator</span>
+                                <span class="font-headline-sm text-headline-sm text-primary tracking-tight hidden"
+                                    data-lang="hi">किसान फसल विक्रय एवं बंपर लाभ पोर्टल</span>
+                                <span
+                                    class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">e-NAM
+                                    Verified</span>
+                            </div>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                <span data-lang="en" class="">Compare your local middleman rates against direct
+                                    institutional buyers in real-time</span>
+                                <span class="hidden" data-lang="hi">बिचौलिया आढ़त बनाम एग्रोब्रिज सीधा मंडी भाव तुलना व
+                                    सीधा बैंक खाता भुगतान</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Quick Stats & Switcher -->
+                    <div
+                        class="flex items-center gap-space-md self-stretch md:self-auto justify-between md:justify-end">
+                        <div
+                            class="flex items-center gap-space-xs bg-surface-container-lowest px-space-md py-space-xs rounded-lg shadow-sm">
+                            <span
+                                class="inline-block w-2.5 h-2.5 rounded-full bg-on-tertiary-container animate-ping"></span>
+                            <span class="font-label-sm text-label-sm text-on-surface-variant">Live Mandi Link:</span>
+                            <span class="font-numeric-data text-numeric-data text-primary font-bold">Khargone •
+                                Nimar</span>
+                        </div>
+                        <div class="flex items-center bg-surface-container rounded-lg p-space-xxs shadow-inner">
+                            <button
+                                class="px-space-md py-1.5 rounded text-on-primary bg-primary font-label-md text-label-md transition-all"
+                                id="toggle-en-btn" onclick="setLanguage('en')">English</button>
+                            <button
+                                class="px-space-md py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all"
+                                id="toggle-hi-btn" onclick="setLanguage('hi')">हिन्दी</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- HERO BANNER TEASER WITH IMAGE FROM DATASTORE -->
+            <section class="w-full px-gutter-mobile md:px-gutter-desktop pt-space-lg pb-space-sm">
+                <div class="max-w-7xl mx-auto relative rounded-2xl overflow-hidden shadow-md">
+                    <div class="relative w-full h-44 md:h-52 bg-primary">
+                        <img alt="Lush green agricultural fields with modern smart farming technology, sensors and clear sunset sky"
+                            class="w-full h-full object-cover mix-blend-overlay opacity-50"
+                            src="https://lh3.googleusercontent.com/aida/AEtjO1UqtpFTT71INfOt3i2Ak2Gxbuh-Ae2gcxXxoy2XjcilR9z6aHdiY1Ul4Fva7V2T7eKKszKWX0DYftjodXx3tGHSv_vnr251nC572FitWsfapfKM6MUGhNHkFDmeGa8uo-BbinBRoCzJY-mv6Rl6MoHEHYspVqUD4p_uKiVp7pPYVLPgya5HeRXuS9nMixGzquSvhqzGHRynliPWLOAUieub-urA6201xqgY831MCMOJ9HcZmyV6pDcj6mo">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent flex items-center">
+                            <div class="p-space-lg md:p-space-xl max-w-2xl text-on-primary flex flex-col gap-space-xs">
+                                <div
+                                    class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container-lowest/20 backdrop-blur-md w-fit">
+                                    <span class="material-symbols-outlined text-sm text-tertiary-fixed">high_res</span>
+                                    <span
+                                        class="font-label-sm text-label-sm text-tertiary-fixed font-bold tracking-wide"
+                                        data-lang="en">100% Zero Deductions Guarantee</span>
+                                    <span
+                                        class="font-label-sm text-label-sm text-tertiary-fixed font-bold tracking-wide hidden"
+                                        data-lang="hi">100% शून्य कटौती गारंटी (आढ़त मुक्त)</span>
+                                </div>
+                                <h1
+                                    class="font-headline-lg text-headline-lg text-on-primary tracking-tight leading-tight">
+                                    <span data-lang="en" class="">Eliminate middlemen cuts. Take home every single
+                                        rupee.</span>
+                                    <span class="hidden" data-lang="hi">बिचौलियों की मनमानी खत्म। अपनी मेहनत की पूरी
+                                        कीमत सीधे खाते में।</span>
+                                </h1>
+                                <p class="font-body-md text-body-md text-on-primary-container max-w-xl">
+                                    <span data-lang="en" class="">Instant digital weight scale verification, same-day
+                                        payment via PM-KISAN Aadhaar DBT within 2 hours.</span>
+                                    <span class="hidden" data-lang="hi">डिजिटल तौल कांटा, पारदर्शी लैब ग्रेडिंग एवं फसल
+                                        तुलते ही 2 घंटे में सीधा बैंक खाता भुगतान (DBT)।</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- MAIN TWO-COLUMN WORKFLOW -->
+            <main class="w-full px-gutter-mobile md:px-gutter-desktop py-space-md">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+                    <!-- LEFT COLUMN: INTAKE & HUB SELECTOR (5 COLS) -->
+                    <section class="lg:col-span-5 flex flex-col gap-space-lg">
+                        <!-- Farmer Identity Card -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex items-center justify-between">
+                            <div class="flex items-center gap-space-md">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold shadow-inner">
+                                    RP
+                                </div>
+                                <div class="flex flex-col">
+                                    <div class="flex items-center gap-space-xs">
+                                        <span class="font-title-md text-title-md text-primary font-bold">Ramesh K.
+                                            Patel</span>
+                                        <span class="material-symbols-outlined text-primary text-base"
+                                            title="Verified Land Record">verified</span>
+                                    </div>
+                                    <span class="font-body-sm text-body-sm text-on-surface-variant">रमेश कुमार पटेल •
+                                        Khasra #412/A</span>
+                                    <span class="font-label-sm text-label-sm text-secondary font-semibold">Pipri Gram,
+                                        Tehsil Kasrawad (M.P.)</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <span
+                                    class="px-space-xs py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">Verified
+                                    Farmer</span>
+                                <span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Tier-1
+                                    Producer</span>
+                            </div>
+                        </div>
+                        <!-- Crop Listing Form -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+                            <div class="flex items-center justify-between">
+                                <h2
+                                    class="font-title-md text-title-md text-primary font-bold flex items-center gap-space-xs">
+                                    <span class="material-symbols-outlined text-primary">eco</span>
+                                    <span data-lang="en" class="">1. Select Crop &amp; Quantity</span>
+                                    <span class="hidden" data-lang="hi">१. फसल एवं मात्रा चुनें</span>
+                                </h2>
+                                <span
+                                    class="font-label-sm text-label-sm text-on-tertiary-container bg-surface-container px-space-xs py-0.5 rounded font-bold">Live
+                                    Rates Synced</span>
+                            </div>
+                            <!-- Crop Selection Quick Pills -->
+                            <div class="flex flex-col gap-space-xs">
+                                <label class="font-label-md text-label-md text-on-surface-variant font-semibold">
+                                    <span data-lang="en" class="">Crop Species / फसल का नाम</span>
+                                    <span class="hidden" data-lang="hi">फसल का चयन करें</span>
+                                </label>
+                                <div class="grid grid-cols-3 gap-space-xs" id="crop-selector-grid">
+                                    <button
+                                        class="crop-btn active-crop p-space-xs rounded-lg text-left transition-all bg-primary-container text-on-primary shadow-sm"
+                                        onclick="selectCrop('wheat', 2840, 2150, 'Sharbati Wheat / शरबती गेहूँ')"
+                                        type="button">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-label-md text-label-md font-bold">Wheat</span>
+                                            <span class="material-symbols-outlined text-sm">grain</span>
+                                        </div>
+                                        <div class="font-label-sm text-label-sm opacity-90">शरबती गेहूँ</div>
+                                        <div class="font-numeric-data text-numeric-data font-bold mt-1">₹2,840/Q</div>
+                                    </button>
+                                    <button
+                                        class="crop-btn p-space-xs rounded-lg text-left transition-all bg-surface-container-low text-on-surface hover:bg-surface-container"
+                                        onclick="selectCrop('rice', 3680, 2900, 'Basmati Rice (1121) / बासमती धान')"
+                                        type="button">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-label-md text-label-md font-bold">Basmati</span>
+                                            <span class="material-symbols-outlined text-sm">spa</span>
+                                        </div>
+                                        <div class="font-label-sm text-label-sm text-on-surface-variant">बासमती धान
+                                        </div>
+                                        <div class="font-numeric-data text-numeric-data text-primary font-bold mt-1">
+                                            ₹3,680/Q</div>
+                                    </button>
+                                    <button
+                                        class="crop-btn p-space-xs rounded-lg text-left transition-all bg-surface-container-low text-on-surface hover:bg-surface-container"
+                                        onclick="selectCrop('mustard', 5450, 4720, 'Mustard (High Oil) / सरसों')"
+                                        type="button">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-label-md text-label-md font-bold">Mustard</span>
+                                            <span class="material-symbols-outlined text-sm">filter_vintage</span>
+                                        </div>
+                                        <div class="font-label-sm text-label-sm text-on-surface-variant">काली सरसों
+                                        </div>
+                                        <div class="font-numeric-data text-numeric-data text-primary font-bold mt-1">
+                                            ₹5,450/Q</div>
+                                    </button>
+                                    <button
+                                        class="crop-btn p-space-xs rounded-lg text-left transition-all bg-surface-container-low text-on-surface hover:bg-surface-container"
+                                        onclick="selectCrop('soybean', 4890, 4100, 'Yellow Soybean / पीला सोयाबीन')"
+                                        type="button">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-label-md text-label-md font-bold">Soybean</span>
+                                            <span class="material-symbols-outlined text-sm">nutrition</span>
+                                        </div>
+                                        <div class="font-label-sm text-label-sm text-on-surface-variant">सोयाबीन</div>
+                                        <div class="font-numeric-data text-numeric-data text-primary font-bold mt-1">
+                                            ₹4,890/Q</div>
+                                    </button>
+                                    <button
+                                        class="crop-btn p-space-xs rounded-lg text-left transition-all bg-surface-container-low text-on-surface hover:bg-surface-container"
+                                        onclick="selectCrop('cotton', 7120, 6200, 'Long Staple Cotton / कपास')"
+                                        type="button">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-label-md text-label-md font-bold">Cotton</span>
+                                            <span class="material-symbols-outlined text-sm">cloud</span>
+                                        </div>
+                                        <div class="font-label-sm text-label-sm text-on-surface-variant">कपास / नरमा
+                                        </div>
+                                        <div class="font-numeric-data text-numeric-data text-primary font-bold mt-1">
+                                            ₹7,120/Q</div>
+                                    </button>
+                                    <button
+                                        class="crop-btn p-space-xs rounded-lg text-left transition-all bg-surface-container-low text-on-surface hover:bg-surface-container"
+                                        onclick="selectCrop('chana', 5300, 4600, 'Desi Chana / चना')" type="button">
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-label-md text-label-md font-bold">Chana</span>
+                                            <span class="material-symbols-outlined text-sm">circle</span>
+                                        </div>
+                                        <div class="font-label-sm text-label-sm text-on-surface-variant">चना / छोला
+                                        </div>
+                                        <div class="font-numeric-data text-numeric-data text-primary font-bold mt-1">
+                                            ₹5,300/Q</div>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Quantity Stepper & Presets -->
+                            <div class="flex flex-col gap-space-xs">
+                                <div class="flex items-center justify-between">
+                                    <label class="font-label-md text-label-md text-on-surface-variant font-semibold">
+                                        <span data-lang="en" class="">Produce Quantity (Quintals)</span>
+                                        <span class="hidden" data-lang="hi">उपज की मात्रा (क्विंटल में दर्ज करें)</span>
+                                    </label>
+                                    <span class="font-label-sm text-label-sm text-secondary font-bold">1 Quintal = 100
+                                        kg</span>
+                                </div>
+                                <div class="flex items-center gap-space-sm">
+                                    <div
+                                        class="flex items-center bg-surface-container-low rounded-lg p-1 flex-1 shadow-inner">
+                                        <button
+                                            class="w-10 h-10 rounded bg-surface-container-lowest text-primary flex items-center justify-center font-bold text-lg hover:bg-surface-dim transition-colors shadow-sm"
+                                            onclick="adjustQuantity(-5)" type="button">−</button>
+                                        <input
+                                            class="w-full bg-transparent text-center font-headline-md text-headline-md text-primary font-bold outline-none"
+                                            id="quantity-input" max="1000" min="1" oninput="updateCalculations()"
+                                            type="number" value="50">
+                                        <button
+                                            class="w-10 h-10 rounded bg-surface-container-lowest text-primary flex items-center justify-center font-bold text-lg hover:bg-surface-dim transition-colors shadow-sm"
+                                            onclick="adjustQuantity(5)" type="button">+</button>
+                                    </div>
+                                    <div
+                                        class="flex items-center bg-surface-container px-space-md py-space-sm rounded-lg">
+                                        <span class="font-label-lg text-label-lg text-primary font-bold">Quintal
+                                            (क़्विंटल)</span>
+                                    </div>
+                                </div>
+                                <!-- Quick presets pills -->
+                                <div class="flex items-center gap-space-xs mt-1">
+                                    <button
+                                        class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold"
+                                        onclick="setPresetQty(25)" type="button">25 Qtl</button>
+                                    <button
+                                        class="px-space-sm py-1 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold"
+                                        onclick="setPresetQty(50)" type="button">50 Qtl (Popular)</button>
+                                    <button
+                                        class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold"
+                                        onclick="setPresetQty(100)" type="button">100 Qtl</button>
+                                    <button
+                                        class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold"
+                                        onclick="setPresetQty(200)" type="button">200 Qtl</button>
+                                </div>
+                            </div>
+                            <!-- Quality Grade / Moisture level estimate -->
+
+                        </div>
+                        <!-- Dynamic Nearest Pickup Point Locator -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2
+                                        class="font-title-md text-title-md text-primary font-bold flex items-center gap-space-xs">
+                                        <span class="material-symbols-outlined text-secondary">share_location</span>
+                                        <span data-lang="en" class="">2. Nearest Verified Pickup Hub</span>
+                                        <span class="hidden" data-lang="hi">२. निकटतम सत्यापित कलेक्शन केंद्र</span>
+                                    </h2>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                        <span data-lang="en" class="">Auto-calculated around Kasrawad Tehsil
+                                            coordinates</span>
+                                        <span class="hidden" data-lang="hi">आपकी तहसील कसरावद के निकटतम अधिकृत
+                                            केंद्र</span>
+                                    </p>
+                                </div>
+                                <span
+                                    class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-xs text-primary">gps_fixed</span> GPS
+                                    Active
+                                </span>
+                            </div>
+                            <!-- Pickup Hub Radios -->
+                            <div class="flex flex-col gap-space-sm" id="hub-selector-container">
+                                <!-- Hub 1: Selected by default -->
+                                <label
+                                    class="pickup-hub-card relative flex items-start gap-space-md p-space-md rounded-xl bg-primary-fixed/30 cursor-pointer shadow-sm">
+                                    <input checked="" class="mt-1 accent-primary" name="pickup_hub"
+                                        onchange="updateHubSelection(this)" type="radio" value="hub_1">
+                                    <div class="flex flex-col flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-space-xs">
+                                            <span class="font-label-lg text-label-lg text-primary font-bold">1.
+                                                AgroBridge Hub – Mandi Gate 3</span>
+                                            <span
+                                                class="px-space-xs py-0.5 rounded bg-on-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-bold">1.8
+                                                km away</span>
+                                        </div>
+                                        <span class="font-body-sm text-body-sm text-on-surface-variant">Kasrawad Main
+                                            Highway • 8 min transit</span>
+                                        <div class="flex flex-wrap items-center gap-space-xs mt-space-xs">
+                                            <span
+                                                class="px-space-xs py-0.5 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold flex items-center gap-0.5">
+                                                <span class="material-symbols-outlined text-xs">scale</span> Weighbridge
+                                                Open
+                                            </span>
+                                            <span
+                                                class="px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-tertiary-container font-label-sm text-label-sm font-bold flex items-center gap-0.5">
+                                                <span class="material-symbols-outlined text-xs">event_available</span>
+                                                Today's Slots Available
+                                            </span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <!-- Hub 2 -->
+                                <label
+                                    class="pickup-hub-card relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+                                    <input class="mt-1 accent-primary" name="pickup_hub"
+                                        onchange="updateHubSelection(this)" type="radio" value="hub_2">
+                                    <div class="flex flex-col flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-space-xs">
+                                            <span class="font-label-lg text-label-lg text-on-surface font-bold">2. APMC
+                                                Central Yard Hub</span>
+                                            <span
+                                                class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">4.2
+                                                km away</span>
+                                        </div>
+                                        <span class="font-body-sm text-body-sm text-on-surface-variant">Grain Shed 4 •
+                                            15 min transit</span>
+                                        <div class="flex items-center gap-space-xs mt-space-xs">
+                                            <span
+                                                class="px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">
+                                                Slot Window: 2:00 PM – 6:00 PM
+                                            </span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <!-- Hub 3: Doorstep Tractor pickup -->
+                                <label
+                                    class="pickup-hub-card relative flex items-start gap-space-md p-space-md rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+                                    <input class="mt-1 accent-primary" name="pickup_hub"
+                                        onchange="updateHubSelection(this)" type="radio" value="hub_3">
+                                    <div class="flex flex-col flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-space-xs">
+                                            <span class="font-label-lg text-label-lg text-on-surface font-bold">3. Gram
+                                                Panchayat Kisan Kendra</span>
+                                            <span
+                                                class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">6.5
+                                                km away</span>
+                                        </div>
+                                        <span
+                                            class="font-body-sm text-body-sm text-secondary font-semibold flex items-center gap-1 mt-0.5">
+                                            <span class="material-symbols-outlined text-sm">local_shipping</span>
+                                            Doorstep Tractor Trolley Pickup Available
+                                        </span>
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- Pickup Map Locator Pin Strip -->
+                            <div class="w-full h-32 rounded-lg bg-surface-container flex items-center justify-center relative overflow-hidden shadow-inner"
+                                data-location="Kasrawad APMC Mandi, Madhya Pradesh">
+                                <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                                <div class="z-10 flex flex-col items-center gap-1 text-center px-space-md">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-3xl animate-bounce">location_on</span>
+                                    <span class="font-label-sm text-label-sm text-primary font-bold">AgroBridge Verified
+                                        Hub • Mandi Gate 3 (Coordinates: 22.1332° N, 75.6021° E)</span>
+                                    <span class="font-body-sm text-body-sm text-on-surface-variant">Automated moisture
+                                        scanner, electronic weighing weighbridge, and instant farmer lounge</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- RIGHT COLUMN: DETAILED PRICE & PROFIT MATRIX + BREAKDOWN (7 COLS) -->
+                    <section class="lg:col-span-7 flex flex-col gap-space-lg">
+                        <!-- CALLOUT PROFIT HIGHLIGHT HERO CARD -->
+                        <div
+                            class="bg-gradient-to-br from-primary via-primary-container to-tertiary-container rounded-2xl p-space-xl text-on-primary shadow-xl relative overflow-hidden">
+                            <div
+                                class="absolute -right-8 -bottom-8 w-48 h-48 rounded-full bg-tertiary-fixed-dim/10 blur-2xl pointer-events-none">
+                            </div>
+                            <div class="flex flex-col gap-space-md relative z-10">
+                                <div class="flex flex-wrap items-center justify-between gap-space-sm">
+                                    <div
+                                        class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+                                        <span class="material-symbols-outlined text-sm font-bold">trending_up</span>
+                                        <span data-lang="en" class="">DIRECT PORTAL NET BENEFIT</span>
+                                        <span class="hidden" data-lang="hi">सीधा एग्रोब्रिज शुद्ध किसान लाभ</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center gap-space-xs text-on-primary-container font-label-sm text-label-sm">
+                                        <span class="material-symbols-outlined text-sm">electric_bolt</span>
+                                        <span data-lang="en" class="">Instant DBT Payment within 2 Hours</span>
+                                        <span class="hidden" data-lang="hi">2 घंटे में खाते में सीधी राशि</span>
+                                    </div>
+                                </div>
+                                <!-- Big Profit Numbers -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-lg items-end pt-space-xs">
+                                    <div>
+                                        <span class="font-label-md text-label-md text-on-primary-container block">
+                                            <span data-lang="en" class="">Extra Cash in Farmer's Bank Account:</span>
+                                            <span class="hidden" data-lang="hi">आपके बैंक खाते में अतिरिक्त शुद्ध
+                                                मुनाफा:</span>
+                                        </span>
+                                        <div class="font-display-lg text-display-lg font-bold text-tertiary-fixed tracking-tight"
+                                            id="extra-profit-display">+₹43,450</div>
+                                        <span
+                                            class="font-body-sm text-body-sm text-on-primary-container flex items-center gap-1">
+                                            <span
+                                                class="material-symbols-outlined text-sm text-tertiary-fixed">check_circle</span>
+                                            <span data-lang="en" class="">Above local middleman net settlement</span>
+                                            <span class="hidden" data-lang="hi">पारंपरिक आढ़तिया से इतनी अधिक आय</span>
+                                        </span>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container-lowest/10 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-1">
+                                        <div class="flex items-center justify-between font-label-md text-label-md">
+                                            <span class="text-on-primary-container">Price difference / क्विंटल:</span>
+                                            <span
+                                                class="font-numeric-data text-numeric-data font-bold text-tertiary-fixed"
+                                                id="price-diff-display">+₹690/Qtl (+32.1%)</span>
+                                        </div>
+                                        <div class="flex items-center justify-between font-label-md text-label-md">
+                                            <span class="text-on-primary-container">Commission cut saved:</span>
+                                            <span
+                                                class="font-numeric-data text-numeric-data font-bold text-tertiary-fixed"
+                                                id="commission-saved-display">₹6,450 (6% Free)</span>
+                                        </div>
+                                        <div class="flex items-center justify-between font-label-md text-label-md">
+                                            <span class="text-on-primary-container">Weighing deduction saved:</span>
+                                            <span
+                                                class="font-numeric-data text-numeric-data font-bold text-tertiary-fixed"
+                                                id="weighing-saved-display">₹2,500 (0 cut)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Progress Comparison Bar -->
+                                <div class="flex flex-col gap-space-xs mt-space-xs">
+                                    <div class="flex justify-between font-label-sm text-label-sm">
+                                        <span class="text-on-primary-container">Farmer Value Capture: <strong
+                                                class="text-tertiary-fixed">via AgroBridge</strong></span>
+                                        <span class="text-on-primary-container">Middleman Route: <strong>only
+                                                68%</strong></span>
+                                    </div>
+                                    <div
+                                        class="w-full h-3 rounded-full bg-surface-container-lowest/20 overflow-hidden flex">
+                                        <div class="bg-tertiary-fixed h-full rounded-full transition-all duration-500"
+                                            style="width: 92%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DETAILED SIDE-BY-SIDE COMPARISON MATRIX TABLE -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+                                <div>
+                                    <h3 class="font-headline-sm text-headline-sm text-primary font-bold" data-lang="en">
+                                        Transparent Rate &amp; Net Payment Breakdown
+                                    </h3>
+                                    <h3 class="font-headline-sm text-headline-sm text-primary font-bold hidden"
+                                        data-lang="hi">
+                                        पारदर्शी मूल्य एवं शुद्ध किसान भुगतान विवरण तालिका
+                                    </h3>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                        <span data-lang="en" class="">Calculated for:</span>
+                                        <span class="hidden" data-lang="hi">गणना अनुसार:</span>
+                                        <strong class="text-primary" id="summary-crop-qty">50 Quintals of Sharbati Wheat
+                                            / शरबती गेहूँ</strong>
+                                    </p>
+                                </div>
+                                <span
+                                    class="px-space-sm py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex items-center gap-1 self-start sm:self-auto">
+                                    <span class="material-symbols-outlined text-xs">verified</span> APMC Act Compliant
+                                </span>
+                            </div>
+                            <!-- COMPARISON GRID / TABLE -->
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-surface-container-low text-on-surface">
+                                            <th class="p-space-md font-label-md text-label-md font-bold rounded-l-lg">
+                                                <span data-lang="en" class="">Comparison Factor</span>
+                                                <span class="hidden" data-lang="hi">तुलनात्मक मद</span>
+                                            </th>
+                                            <th class="p-space-md font-label-md text-label-md font-bold text-error">
+                                                <div class="flex flex-col">
+                                                    <span data-lang="en" class="">Local Middlemen / Arhtiya</span>
+                                                    <span class="hidden" data-lang="hi">पारंपरिक व्यापारी /
+                                                        आढ़तिया</span>
+                                                    <span
+                                                        class="font-body-sm text-body-sm font-normal text-on-surface-variant">(Unorganized
+                                                        Traders)</span>
+                                                </div>
+                                            </th>
+                                            <th
+                                                class="p-space-md font-label-md text-label-md font-bold text-primary bg-primary-fixed/40 rounded-r-lg">
+                                                <div class="flex flex-col">
+                                                    <span data-lang="en" class="">AgroBridge Direct Mandi</span>
+                                                    <span class="hidden" data-lang="hi">एग्रोब्रिज सीधा बाज़ार</span>
+                                                    <span
+                                                        class="font-body-sm text-body-sm font-normal text-primary">(Verified
+                                                        Institutional)</span>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-body-md text-body-md text-on-surface">
+                                        <!-- Base Mandi Quoted Rate -->
+                                        <tr class="hover:bg-surface-container-low/40 transition-colors">
+                                            <td class="p-space-md font-medium">
+                                                <div class="flex items-center gap-space-xs">
+                                                    <span
+                                                        class="material-symbols-outlined text-sm text-on-surface-variant">sell</span>
+                                                    <div>
+                                                        <span data-lang="en" class="">Offered Base Price per
+                                                            Quintal</span>
+                                                        <span class="hidden" data-lang="hi">प्रति क्विंटल घोषित
+                                                            भाव</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="p-space-md font-numeric-data text-numeric-data font-bold text-on-surface-variant"
+                                                id="trader-unit-price">₹2,150 / Qtl</td>
+                                            <td class="p-space-md font-numeric-data text-numeric-data font-bold text-primary bg-primary-fixed/20"
+                                                id="agrobridge-unit-price">₹2,840 / Qtl (+₹690 bonus)</td>
+                                        </tr>
+                                        <!-- Gross Value before deductions -->
+                                        <tr class="bg-surface-container-low/20">
+                                            <td class="p-space-md font-medium">
+                                                <span data-lang="en" class="">Gross Crop Value (Rate × Quantity)</span>
+                                                <span class="hidden" data-lang="hi">कुल घोषित मूल्य (दर × कुल
+                                                    मात्रा)</span>
+                                            </td>
+                                            <td class="p-space-md font-numeric-data text-numeric-data font-semibold text-on-surface"
+                                                id="trader-gross">₹1,07,500</td>
+                                            <td class="p-space-md font-numeric-data text-numeric-data font-bold text-primary bg-primary-fixed/20"
+                                                id="agrobridge-gross">₹1,42,000</td>
+                                        </tr>
+                                        <!-- Middleman Commission / Arhat -->
+                                        <tr class="hover:bg-surface-container-low/40 transition-colors">
+                                            <td class="p-space-md font-medium">
+                                                <div class="flex items-center gap-space-xs">
+                                                    <span
+                                                        class="material-symbols-outlined text-sm text-error">money_off</span>
+                                                    <div>
+                                                        <span data-lang="en" class="">Brokerage / Arhat
+                                                            Commission</span>
+                                                        <span class="hidden" data-lang="hi">आढ़त कमीशन / दलाली
+                                                            शुल्क</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="p-space-md font-numeric-data text-numeric-data text-error font-semibold"
+                                                id="trader-comm">−₹6,450 <span
+                                                    class="font-body-sm text-body-sm text-on-surface-variant">(6.0%
+                                                    cut)</span></td>
+                                            <td
+                                                class="p-space-md font-numeric-data text-numeric-data font-bold text-on-tertiary-container bg-primary-fixed/20">
+                                                ₹0 <span
+                                                    class="px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold">100%
+                                                    Free / शून्य</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Weighing Manipulation / Karda Cut -->
+                                        <tr class="hover:bg-surface-container-low/40 transition-colors">
+                                            <td class="p-space-md font-medium">
+                                                <div class="flex items-center gap-space-xs">
+                                                    <span
+                                                        class="material-symbols-outlined text-sm text-error">scale</span>
+                                                    <div>
+                                                        <span data-lang="en" class="">Weighing Loss &amp; Loading Cut
+                                                            (Karda)</span>
+                                                        <span class="hidden" data-lang="hi">तौल कटौती / पल्लेदारी /
+                                                            गर्दा कटौती</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="p-space-md font-numeric-data text-numeric-data text-error font-semibold"
+                                                id="trader-weigh">−₹2,500 <span
+                                                    class="font-body-sm text-body-sm text-on-surface-variant">(Manual
+                                                    scales)</span></td>
+                                            <td
+                                                class="p-space-md font-numeric-data text-numeric-data font-bold text-on-tertiary-container bg-primary-fixed/20">
+                                                ₹0 <span
+                                                    class="font-body-sm text-body-sm text-primary font-semibold">(Govt
+                                                    Certified Digital Scale)</span>
+                                            </td>
+                                        </tr>
+                                        <!-- Payment Speed & Terms -->
+                                        <tr class="hover:bg-surface-container-low/40 transition-colors">
+                                            <td class="p-space-md font-medium">
+                                                <div class="flex items-center gap-space-xs">
+                                                    <span
+                                                        class="material-symbols-outlined text-sm text-on-surface-variant">schedule</span>
+                                                    <div>
+                                                        <span data-lang="en" class="">Payment Mode &amp; Timeline</span>
+                                                        <span class="hidden" data-lang="hi">भुगतान समय व तरीका</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="p-space-md font-body-sm text-body-sm text-error">
+                                                7 to 21 Days credit, post-dated cheques, high default risk
+                                            </td>
+                                            <td
+                                                class="p-space-md font-body-sm text-body-sm text-primary font-bold bg-primary-fixed/20">
+                                                Direct Bank Transfer (DBT) within 2 Hours directly to Aadhaar link
+                                            </td>
+                                        </tr>
+                                        <!-- FINAL NET AMOUNT IN FARMER HAND -->
+                                        <tr class="bg-surface-container text-on-surface">
+                                            <td
+                                                class="p-space-md font-title-md text-title-md font-bold text-primary rounded-l-lg">
+                                                <span data-lang="en" class="">Total Net in Farmer's Pocket</span>
+                                                <span class="hidden" data-lang="hi">किसान के हाथ में शुद्ध राशि</span>
+                                            </td>
+                                            <td class="p-space-md font-headline-sm text-headline-sm font-bold text-on-surface-variant"
+                                                id="trader-net">₹98,550</td>
+                                            <td class="p-space-md font-headline-sm text-headline-sm font-bold text-primary bg-primary-fixed rounded-r-lg"
+                                                id="agrobridge-net">₹1,42,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Why AgroBridge Pays Higher: Transparent Explanation -->
+                            <div
+                                class="mt-space-sm p-space-md rounded-xl bg-surface-container-low flex items-start gap-space-md">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined">lightbulb</span>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <h4 class="font-label-lg text-label-lg text-primary font-bold">
+                                        <span data-lang="en" class="">Why does AgroBridge offer ₹43,450 more for your
+                                            harvest?</span>
+                                        <span class="hidden" data-lang="hi">एग्रोब्रिज आपको ₹43,450 अधिक का भुगतान कैसे
+                                            कर पाता है?</span>
+                                    </h4>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                        <span data-lang="en" class="">
+                                            Traditional mandis pass your produce through Village Aggregators → District
+                                            Sub-Arhtiyas → State Wholesalers → Processing Plants. Each middleman takes
+                                            4-7% margin. AgroBridge minimizes the intermediaries and connects
+                                            consumers directly to the farmers.
+                                        </span>
+                                        <span class="hidden" data-lang="hi">
+                                            पारंपरिक व्यापार में गाँव का दलाल, आढ़तिया, थोक व्यापारी और मिल मालिक के बीच
+                                            आपकी उपज 4 बार बिकती है और हर कोई 4 से 7% कमीशन काटता है। एग्रोब्रिज आपकी
+                                            फसल सीधे बड़े फ़ूड प्रोसेसर्स और निर्यातकों को उपलब्ध कराता है, जिससे
+                                            बिचौलियों का खर्च खत्म होकर मूल्य सीधे किसान के खाते में जमा
+                                            होता है।
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ACTION CTA & INSTITUTIONAL TRUST SEALS -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <div
+                                class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
+                                <div>
+                                    <span
+                                        class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Ready
+                                        to monetize?</span>
+                                    <div class="flex items-center gap-space-xs">
+                                        <span class="font-title-md text-title-md text-primary font-bold"
+                                            data-lang="en">Lock Rate &amp; Schedule Drop</span>
+                                        <span class="font-title-md text-title-md text-primary font-bold hidden"
+                                            data-lang="hi">भाव सुरक्षित करें और पिकअप तय करें</span>
+                                    </div>
+                                    <span class="font-body-sm text-body-sm text-on-surface-variant">No listing fee •
+                                        Free instant cancellation up to 4 hrs before slot</span>
+                                </div>
+                                <!-- PRIMARY BOOKING BUTTON -->
+                                <button
+                                    class="px-space-xl py-space-md rounded-lg bg-primary hover:bg-tertiary text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-xs shadow-md transition-all"
+                                    onclick="triggerBookingModal()" type="button">
+                                    <span class="material-symbols-outlined">task_alt</span>
+                                    <span data-lang="en" class="">Confirm &amp; Schedule Pickup</span>
+                                    <span class="hidden" data-lang="hi">फसल बुकिंग व स्लॉट सुरक्षित करें</span>
+                                </button>
+                            </div>
+                            <!-- Trust Badges Strip -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs pt-space-xs">
+                                <div class="flex items-center gap-space-xs p-space-xs rounded bg-surface-container-low">
+                                    <span class="material-symbols-outlined text-primary text-base">verified_user</span>
+                                    <div class="flex flex-col leading-none">
+                                        <span class="font-label-sm text-label-sm font-bold text-primary">ICAR
+                                            Grade-A</span>
+                                        <span class="font-body-sm text-[10px] text-on-surface-variant">Quality
+                                            Verified</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-space-xs p-space-xs rounded bg-surface-container-low">
+                                    <span
+                                        class="material-symbols-outlined text-primary text-base">account_balance</span>
+                                    <div class="flex flex-col leading-none">
+                                        <span class="font-label-sm text-label-sm font-bold text-primary">PM-KISAN
+                                            DBT</span>
+                                        <span class="font-body-sm text-[10px] text-on-surface-variant">Direct In
+                                            Account</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-space-xs p-space-xs rounded bg-surface-container-low">
+                                    <span class="material-symbols-outlined text-primary text-base">lock</span>
+                                    <div class="flex flex-col leading-none">
+                                        <span class="font-label-sm text-label-sm font-bold text-primary">Zero
+                                            Cuts</span>
+                                        <span class="font-body-sm text-[10px] text-on-surface-variant">Certified
+                                            Weight</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-space-xs p-space-xs rounded bg-surface-container-low">
+                                    <span class="material-symbols-outlined text-secondary text-base">call</span>
+                                    <div class="flex flex-col leading-none">
+                                        <span
+                                            class="font-label-sm text-label-sm font-bold text-primary">1800-180-1551</span>
+                                        <span class="font-body-sm text-[10px] text-on-surface-variant">Kisan Sahayata
+                                            24x7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            <!-- CONFIRMATION MODAL (POP-UP SIMULATION) -->
+            <div class="fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-space-md"
+                id="booking-modal">
+                <div
+                    class="bg-surface-container-lowest max-w-lg w-full rounded-2xl p-space-xl shadow-2xl flex flex-col gap-space-lg relative">
+                    <button class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface"
+                        onclick="closeBookingModal()" type="button">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                    <div class="flex items-center gap-space-md">
+                        <div
+                            class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">
+                            <span class="material-symbols-outlined text-2xl">check_circle</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-sm text-headline-sm text-primary font-bold" data-lang="en">Confirm
+                                Crop Lot Booking</h3>
+                            <h3 class="font-headline-sm text-headline-sm text-primary font-bold hidden" data-lang="hi">
+                                फसल बुकिंग एवं स्लॉट की पुष्टि</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">OTP will be sent to Ramesh
+                                Patel's registered mobile (+91 98260 •••••)</p>
+                        </div>
+                    </div>
+                    <!-- Booking Summary Box -->
+                    <div
+                        class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs font-body-md text-body-md">
+                        <div class="flex justify-between">
+                            <span class="text-on-surface-variant">Crop:</span>
+                            <span class="font-bold text-primary" id="modal-crop-name">Sharbati Wheat / शरबती
+                                गेहूँ</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-on-surface-variant">Quantity:</span>
+                            <span class="font-bold text-primary" id="modal-crop-qty">50 Quintals</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-on-surface-variant">Selected Hub:</span>
+                            <span class="font-bold text-primary" id="modal-hub-name">AgroBridge Hub – Mandi Gate 3 (1.8
+                                km)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-on-surface-variant">Lock-in Price:</span>
+                            <span class="font-bold text-primary" id="modal-price-rate">₹2,840 / Quintal</span>
+                        </div>
+                        <div class="h-[1px] bg-outline-variant/30 my-1"></div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary">Total Farmer Payout (DBT):</span>
+                            <span class="font-headline-sm text-headline-sm text-primary font-bold"
+                                id="modal-total-payout">₹1,42,000</span>
+                        </div>
+                    </div>
+                    <!-- OTP Entry Simulation -->
+                    <div class="flex flex-col gap-space-xs">
+                        <label class="font-label-md text-label-md text-on-surface-variant font-semibold">Enter 4-digit
+                            Kisan OTP</label>
+                        <div class="flex gap-space-xs">
+                            <input
+                                class="w-12 h-12 text-center font-headline-md text-headline-md rounded-lg bg-surface-container text-primary font-bold outline-none"
+                                maxlength="1" type="text" value="7">
+                            <input
+                                class="w-12 h-12 text-center font-headline-md text-headline-md rounded-lg bg-surface-container text-primary font-bold outline-none"
+                                maxlength="1" type="text" value="4">
+                            <input
+                                class="w-12 h-12 text-center font-headline-md text-headline-md rounded-lg bg-surface-container text-primary font-bold outline-none"
+                                maxlength="1" type="text" value="2">
+                            <input
+                                class="w-12 h-12 text-center font-headline-md text-headline-md rounded-lg bg-surface-container text-primary font-bold outline-none"
+                                maxlength="1" type="text" value="9">
+                            <div class="flex-1 flex items-center justify-end">
+                                <span
+                                    class="text-on-tertiary-container font-label-sm text-label-sm font-semibold flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">timer</span> Resend in 48s
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-space-sm">
+                        <button
+                            class="flex-1 py-space-md rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg font-bold hover:bg-surface-dim transition-colors"
+                            onclick="closeBookingModal()" type="button">
+                            Cancel / रद्द करें
+                        </button>
+                        <button
+                            class="flex-1 py-space-md rounded-lg bg-primary text-on-primary font-label-lg text-label-lg font-bold hover:bg-tertiary transition-colors shadow-md"
+                            onclick="completeBookingSuccess()" type="button">
+                            Verify &amp; Book Slot
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- SUCCESS TOAST -->
+            <div class="fixed bottom-8 right-8 z-50 hidden bg-primary text-on-primary px-space-lg py-space-md rounded-xl shadow-2xl flex items-center gap-space-md border border-tertiary-fixed"
+                id="success-toast">
+                <span class="material-symbols-outlined text-tertiary-fixed text-3xl">task_alt</span>
+                <div class="flex flex-col">
+                    <span class="font-label-lg text-label-lg font-bold text-tertiary-fixed">Slot Confirmed
+                        #AGB-78219</span>
+                    <span class="font-body-sm text-body-sm text-on-primary-container">SMS confirmation sent to Ramesh
+                        Patel. Weighbridge gate pass activated.</span>
+                </div>
+            </div>
+            <!-- INTERACTIVE CONTROLLER JAVASCRIPT -->
+            <script>
+                // State management for crop comparison
+                const state = {
+                    lang: 'en',
+                    cropKey: 'wheat',
+                    cropName: 'Sharbati Wheat / शरबती गेहूँ',
+                    agroPrice: 2840,
+                    traderPrice: 2150,
+                    quantity: 50,
+                    selectedHub: 'AgroBridge Hub – Mandi Gate 3 (1.8 km)'
+                };
+
+                function setLanguage(lang) {
+                    state.lang = lang;
+                    const enElements = document.querySelectorAll('[data-lang="en"]');
+                    const hiElements = document.querySelectorAll('[data-lang="hi"]');
+                    const btnEn = document.getElementById('toggle-en-btn');
+                    const btnHi = document.getElementById('toggle-hi-btn');
+
+                    if (lang === 'hi') {
+                        enElements.forEach(el => el.classList.add('hidden'));
+                        hiElements.forEach(el => el.classList.remove('hidden'));
+                        btnHi.className = 'px-space-md py-1.5 rounded text-on-primary bg-primary font-label-md text-label-md transition-all';
+                        btnEn.className = 'px-space-md py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all';
+                    } else {
+                        hiElements.forEach(el => el.classList.add('hidden'));
+                        enElements.forEach(el => el.classList.remove('hidden'));
+                        btnEn.className = 'px-space-md py-1.5 rounded text-on-primary bg-primary font-label-md text-label-md transition-all';
+                        btnHi.className = 'px-space-md py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all';
+                    }
+                    updateCalculations();
+                }
+
+                function selectCrop(cropKey, agroPrice, traderPrice, cropName) {
+                    state.cropKey = cropKey;
+                    state.agroPrice = agroPrice;
+                    state.traderPrice = traderPrice;
+                    state.cropName = cropName;
+
+                    // Update button visual states
+                    const buttons = document.querySelectorAll('#crop-selector-grid .crop-btn');
+                    buttons.forEach(btn => {
+                        btn.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+                        btn.classList.add('bg-surface-container-low', 'text-on-surface');
+                    });
+
+                    // Highlight target button
+                    event.currentTarget.classList.remove('bg-surface-container-low', 'text-on-surface');
+                    event.currentTarget.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+
+                    updateCalculations();
+                }
+
+                function adjustQuantity(delta) {
+                    const input = document.getElementById('quantity-input');
+                    let val = parseInt(input.value, 10) || 0;
+                    val = Math.max(1, Math.min(1000, val + delta));
+                    input.value = val;
+                    state.quantity = val;
+                    updateCalculations();
+                }
+
+                function setPresetQty(qty) {
+                    document.getElementById('quantity-input').value = qty;
+                    state.quantity = qty;
+                    updateCalculations();
+                }
+
+                function updateHubSelection(radio) {
+                    if (radio.value === 'hub_1') {
+                        state.selectedHub = 'AgroBridge Hub – Mandi Gate 3 (1.8 km)';
+                    } else if (radio.value === 'hub_2') {
+                        state.selectedHub = 'APMC Central Yard Hub (4.2 km)';
+                    } else {
+                        state.selectedHub = 'Gram Panchayat Kisan Kendra (6.5 km Doorstep)';
+                    }
+                    // Update visual style
+                    document.querySelectorAll('.pickup-hub-card').forEach(card => {
+                        card.classList.remove('bg-primary-fixed/30', 'shadow-sm');
+                        card.classList.add('bg-surface-container-low');
+                    });
+                    radio.closest('.pickup-hub-card').classList.add('bg-primary-fixed/30', 'shadow-sm');
+                    radio.closest('.pickup-hub-card').classList.remove('bg-surface-container-low');
+                }
+
+                function formatINR(val) {
+                    return '₹' + Math.round(val).toLocaleString('en-IN');
+                }
+
+                function updateCalculations() {
+                    const qInput = document.getElementById('quantity-input');
+                    state.quantity = Math.max(1, parseInt(qInput.value, 10) || 1);
+
+                    // Calculations
+                    const q = state.quantity;
+                    const traderGross = state.traderPrice * q;
+                    const traderCommission = traderGross * 0.06; // 6% commission cut
+                    const traderWeighingDeduction = q * 50; // ₹50/qtl manipulation / karda
+                    const traderNet = traderGross - traderCommission - traderWeighingDeduction;
+
+                    const agroGross = state.agroPrice * q;
+                    const agroNet = agroGross; // 0 commission, 0 cuts
+                    const netExtra = agroNet - traderNet;
+                    const unitDiff = state.agroPrice - state.traderPrice;
+                    const diffPercent = ((unitDiff / state.traderPrice) * 100).toFixed(1);
+
+                    // Update Highlight hero card
+                    document.getElementById('extra-profit-display').textContent = '+' + formatINR(netExtra);
+                    document.getElementById('price-diff-display').textContent = `+₹${unitDiff}/Qtl (+${diffPercent}%)`;
+                    document.getElementById('commission-saved-display').textContent = `${formatINR(traderCommission)} (6% Free)`;
+                    document.getElementById('weighing-saved-display').textContent = `${formatINR(traderWeighingDeduction)} (0 cut)`;
+
+                    // Update Breakdown Table
+                    document.getElementById('summary-crop-qty').textContent = `${q} Quintals of ${state.cropName}`;
+                    document.getElementById('trader-unit-price').textContent = `${formatINR(state.traderPrice)} / Qtl`;
+                    document.getElementById('agrobridge-unit-price').textContent = `${formatINR(state.agroPrice)} / Qtl (+₹${unitDiff} bonus)`;
+                    document.getElementById('trader-gross').textContent = formatINR(traderGross);
+                    document.getElementById('agrobridge-gross').textContent = formatINR(agroGross);
+                    document.getElementById('trader-comm').innerHTML = `−${formatINR(traderCommission)} <span class="font-body-sm text-body-sm text-on-surface-variant">(6.0% cut)</span>`;
+                    document.getElementById('trader-weigh').innerHTML = `−${formatINR(traderWeighingDeduction)} <span class="font-body-sm text-body-sm text-on-surface-variant">(Manual scales)</span>`;
+                    document.getElementById('trader-net').textContent = formatINR(traderNet);
+                    document.getElementById('agrobridge-net').textContent = formatINR(agroNet);
+
+                    // Update modal data
+                    document.getElementById('modal-crop-name').textContent = state.cropName;
+                    document.getElementById('modal-crop-qty').textContent = `${q} Quintals`;
+                    document.getElementById('modal-hub-name').textContent = state.selectedHub;
+                    document.getElementById('modal-price-rate').textContent = `${formatINR(state.agroPrice)} / Quintal`;
+                    document.getElementById('modal-total-payout').textContent = formatINR(agroNet);
+                }
+
+                function triggerBookingModal() {
+                    document.getElementById('booking-modal').classList.remove('hidden');
+                }
+
+                function closeBookingModal() {
+                    document.getElementById('booking-modal').classList.add('hidden');
+                }
+
+                function completeBookingSuccess() {
+                    closeBookingModal();
+                    const toast = document.getElementById('success-toast');
+                    toast.classList.remove('hidden');
+                    setTimeout(() => {
+                        toast.classList.add('hidden');
+                    }, 5000);
+                }
+
+                // Initial render
+                document.addEventListener('DOMContentLoaded', () => {
+                    updateCalculations();
+                });
+            </script>
+        </div>
+    </main>
+    <footer class="w-full bg-surface-container-low py-space-2xl">
+        <div class="w-full px-gutter-desktop mx-auto flex flex-col gap-space-xl">
+            <div class="flex flex-wrap items-center justify-between gap-space-lg pb-space-lg">
+                <div class="flex items-center gap-space-md"><img alt="Minimalist modern vector logo for AgroBridge, combining an elegant sprout seedling leaf seamlessly arched into a bridge or handshake symbol. Deep agricultural green and vibrant leaf green accents, crisp clean vector lines on a transparent background, professional agri-tech branding.. Design context: - Primary color: #1b4332
+- Font: inter
+- Mode: light
+- Roundness: rounded-md
+. The logo should be visually consistent with these brand tokens." class="h-7 w-auto object-contain"
+                        src="https://lh3.googleusercontent.com/aida/AEtjO1Wbx7IknnCjj34_YQtdNNENu1wA12pUy3Zxt7VfTjn2-Ye9NaS-QXR-DsbO9FtsWzErf54bhYwN15k_XK7yJ8wXqJi3e-pTK-8Dyjg0xed-ML0seggCsE0YyTTYUW6eglardTbnfjAHbxVH5chBYrFeyB8w0OOnErsPItgDTs5k9EeLLXB0zxCB-qMRv-Klmr18gtSpPcmXwZjFmErVfnA5SnOIuXhVlTXdKVwUtgGbc88an31K2dX3zw"><span
+                        class="font-title-md text-title-md text-primary font-bold">AgroBridge Kisan Network</span></div>
+                <div class="flex flex-wrap items-center gap-space-md">
+                    <div
+                        class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-highest rounded-lg text-on-surface">
+                        <span class="material-symbols-outlined text-primary text-sm">verified_user</span><span
+                            class="font-label-sm text-label-sm font-semibold">e-NAM Certified</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-highest rounded-lg text-on-surface">
+                        <span class="material-symbols-outlined text-primary text-sm">agriculture</span><span
+                            class="font-label-sm text-label-sm font-semibold">ICAR Affiliated</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-highest rounded-lg text-on-surface">
+                        <span class="material-symbols-outlined text-primary text-sm">payments</span><span
+                            class="font-label-sm text-label-sm font-semibold">PM-KISAN Integrated</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-space-md text-on-surface-variant font-body-sm text-body-sm">
+                <p class="">© 2024 AgroBridge Kisan Portal. Institutional agricultural trading infrastructure under
+                    Ministry of Agriculture guidelines.</p>
+                <div class="flex gap-space-lg"><a
+                        class="hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Toll-free
+                        Support: 1800-180-1551</a><a
+                        class="hover:text-on-surface transition-colors font-label-sm text-label-sm" href="#">Mandi
+                        Standards</a><a class="hover:text-on-surface transition-colors font-label-sm text-label-sm"
+                        href="#">Farmer Grievance Redressal</a></div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
