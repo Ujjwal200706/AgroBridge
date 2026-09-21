@@ -29,6 +29,36 @@
         ::-webkit-scrollbar {
             display: none;
         }
+
+        @keyframes introGlowPulse {
+
+            0%,
+            100% {
+                opacity: 0.35;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.65;
+                transform: scale(1.08);
+            }
+        }
+
+        .animate-glow-pulse {
+            animation: introGlowPulse 6s ease-in-out infinite;
+        }
+
+        .glass-window {
+            background: linear-gradient(135deg, rgba(1, 45, 29, 0.88), rgba(0, 33, 20, 0.94));
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .glass-hud {
+            background: rgba(0, 20, 12, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
     </style>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
@@ -101,7 +131,193 @@
 </head>
 
 <body
-    class="bg-surface font-['Inter'] text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-tertiary-fixed selection:text-primary">
+    class="bg-surface font-['Inter'] text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-tertiary-fixed selection:text-primary relative">
+
+    <!-- 0. TRANSPARENT INTRODUCTORY VIDEO WINDOW (SHOWN FIRST ON LOAD) -->
+    <div id="intro-video-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 transition-all duration-500 opacity-100 visible bg-black/65 backdrop-blur-md"
+        role="dialog" aria-modal="true" aria-labelledby="intro-modal-title" onclick="handleBackdropClick(event)">
+        <!-- Frosted Glassmorphic Window Container -->
+        <div id="intro-modal-card"
+            class="relative w-full max-w-5xl glass-window border border-emerald-400/35 rounded-3xl shadow-[0_20px_70px_rgba(0,0,0,0.85)] text-white overflow-hidden transition-all duration-500 transform scale-100 flex flex-col max-h-[92vh] ring-1 ring-white/20"
+            onclick="event.stopPropagation()">
+
+            <!-- Ambient Decorative Emerald & Amber Glows -->
+            <div
+                class="absolute -top-20 -left-20 w-80 h-80 bg-emerald-500/25 rounded-full blur-3xl pointer-events-none animate-glow-pulse">
+            </div>
+            <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse"
+                style="animation-delay: -3s;"></div>
+
+            <!-- Glass Window Header Bar -->
+            <div
+                class="relative z-10 flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-black/30 backdrop-blur-md">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-500/25 border border-emerald-400/40 text-tertiary-fixed shadow-sm">
+                        <span class="material-symbols-outlined text-lg"
+                            style="font-variation-settings: 'FILL' 1;">play_circle</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs sm:text-sm font-extrabold tracking-tight text-white drop-shadow-sm"
+                                id="intro-modal-title">AgroBridge Platform Tour</span>
+                            <span
+                                class="inline-flex items-center gap-1 bg-emerald-500/25 border border-emerald-400/40 text-emerald-300 text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                                <span id="intro-modal-badge">Live Intro</span>
+                            </span>
+                        </div>
+                        <p class="text-[10px] sm:text-[11px] text-white/70 hidden xs:block" id="intro-modal-sub">
+                            Direct Kisan-Mandi Network &amp; 100% Traceable Consumer Hub
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Header Action Controls -->
+                <div class="flex items-center space-x-2">
+                    <!-- Audio Toggle Button -->
+                    <button type="button" id="intro-audio-btn" onclick="toggleIntroAudio()"
+                        class="inline-flex items-center space-x-1.5 bg-white/10 hover:bg-white/20 border border-white/20 text-xs text-white font-semibold px-2.5 sm:px-3 py-1.5 rounded-full transition-all duration-200 cursor-pointer shadow-xs">
+                        <span class="material-symbols-outlined text-sm sm:text-base text-tertiary-fixed"
+                            id="intro-audio-icon">volume_off</span>
+                        <span id="intro-audio-label" class="hidden sm:inline text-xs">Unmute</span>
+                    </button>
+
+                    <!-- Skip to Portal / Close Button -->
+                    <button type="button" onclick="closeIntroModal()"
+                        class="group flex items-center space-x-1.5 bg-emerald-400/15 hover:bg-emerald-400/30 border border-emerald-400/35 hover:border-emerald-400/60 text-emerald-200 hover:text-white px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 shadow-sm cursor-pointer"
+                        id="intro-skip-btn">
+                        <span id="intro-skip-text">Skip to Portal</span>
+                        <span
+                            class="material-symbols-outlined text-sm group-hover:rotate-90 transition-transform duration-200">close</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Video Player Stage (Perfect Fit Auto-Ratio Container) -->
+            <div class="relative z-10 p-3 sm:p-4 flex-1 flex flex-col min-h-0 overflow-y-auto">
+                <div id="intro-video-container"
+                    class="relative w-full rounded-2xl overflow-hidden bg-black/95 border border-white/15 shadow-2xl group flex items-center justify-center max-h-[66vh] min-h-[260px] aspect-video">
+                    <!-- HTML5 Video Player with object-contain for 100% Perfect Fit -->
+                    <video id="intro-video" class="w-full h-full max-h-[66vh] object-contain transition-all duration-200" autoplay muted loop playsinline
+                        preload="auto"
+                        poster="https://lh3.googleusercontent.com/aida/AEtjO1UqtpFTT71INfOt3i2Ak2Gxbuh-Ae2gcxXxoy2XjcilR9z6aHdiY1Ul4Fva7V2T7eKKszKWX0DYftjodXx3tGHSv_vnr251nC572FitWsfapfKM6MUGhNHkFDmeGa8uo-BbinBRoCzJY-mv6Rl6MoHEHYspVqUD4p_uKiVp7pPYVLPgya5HeRXuS9nMixGzquSvhqzGHRynliPWLOAUieub-urA6201xqgY831MCMOJ9HcZmyV6pDcj6mo">
+                        <source src="AgroBridge Intro.mp4" type="video/mp4" />
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <!-- Subtle bottom gradient only behind controls -->
+                    <div
+                        class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none">
+                    </div>
+
+                    <!-- Center Big Play/Pause Touch Target & Button -->
+                    <button type="button" id="intro-center-play-btn" onclick="toggleIntroPlay()"
+                        class="absolute z-20 w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-emerald-400 hover:bg-emerald-300 text-primary flex items-center justify-center shadow-[0_0_35px_rgba(146,247,195,0.7)] backdrop-blur-md transition-all duration-300 transform scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 cursor-pointer">
+                        <span class="material-symbols-outlined text-3xl sm:text-4xl" id="intro-center-play-icon"
+                            style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    </button>
+
+                    <!-- Unmute Prompt Badge on Top of Video -->
+                    <div id="intro-unmute-prompt" onclick="toggleIntroAudio()"
+                        class="absolute top-3 left-3 z-20 flex items-center space-x-2 bg-black/80 hover:bg-black/95 backdrop-blur-md border border-emerald-400/40 text-white text-xs font-semibold px-3 py-1.5 rounded-full cursor-pointer transition-all duration-200 shadow-lg animate-bounce">
+                        <span
+                            class="material-symbols-outlined text-sm text-tertiary-fixed animate-pulse">volume_up</span>
+                        <span id="intro-unmute-prompt-text" class="text-[11px] sm:text-xs">Tap for sound 🔊</span>
+                    </div>
+
+                    <!-- Floating Feature Highlight Card (Bottom-left compact badge) -->
+                    <div
+                        class="absolute bottom-11 left-3 right-3 sm:left-4 sm:right-auto sm:max-w-sm z-20 pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity">
+                        <div class="bg-black/75 backdrop-blur-xl border border-white/20 p-2 sm:p-2.5 rounded-xl shadow-xl transition-all duration-500 transform"
+                            id="intro-feature-card">
+                            <div class="flex items-center space-x-1.5 text-tertiary-fixed text-[11px] font-bold">
+                                <span class="material-symbols-outlined text-sm"
+                                    id="intro-feature-icon">currency_rupee</span>
+                                <span id="intro-feature-tag" class="uppercase tracking-wider">DIRECT APMC &amp; MANDI
+                                    DISCOVERY</span>
+                            </div>
+                            <p class="text-[11px] text-white/90 leading-tight mt-0.5" id="intro-feature-desc">
+                                Real-time MSP and mandi rates with zero middleman commissions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Sleek Glass Bottom Video Control Bar -->
+                    <div
+                        class="absolute bottom-0 inset-x-0 z-20 px-3 py-1.5 sm:py-2 glass-hud flex items-center justify-between gap-2.5 text-xs border-t border-white/10">
+                        <div class="flex items-center space-x-1.5">
+                            <button type="button" onclick="toggleIntroPlay()"
+                                class="p-1 rounded-lg hover:bg-white/20 text-white transition-colors cursor-pointer"
+                                title="Play/Pause">
+                                <span class="material-symbols-outlined text-base sm:text-lg"
+                                    id="intro-bar-play-icon">pause</span>
+                            </button>
+                            <button type="button" onclick="toggleIntroAudio()"
+                                class="p-1 rounded-lg hover:bg-white/20 text-white transition-colors cursor-pointer"
+                                title="Mute/Unmute">
+                                <span class="material-symbols-outlined text-base sm:text-lg"
+                                    id="intro-bar-audio-icon">volume_off</span>
+                            </button>
+                            <span id="intro-time-display"
+                                class="text-[10px] sm:text-[11px] text-white/80 font-mono">0:00 / 0:30</span>
+                        </div>
+
+                        <!-- Progress Bar Track -->
+                        <div class="flex-1 mx-1.5 relative h-1.5 bg-white/20 hover:h-2 rounded-full overflow-hidden cursor-pointer transition-all"
+                            onclick="seekIntroVideo(event)" title="Seek video">
+                            <div id="intro-progress-bar"
+                                class="h-full bg-emerald-400 rounded-full transition-all duration-75" style="width: 0%">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-1.5">
+                            <!-- Fit / Fill Toggle -->
+                            <button type="button" onclick="toggleVideoFit()" id="intro-fit-btn"
+                                class="p-1 rounded-lg hover:bg-white/20 text-white transition-colors cursor-pointer"
+                                title="Toggle Fit Screen (Contain) vs Fill Screen (Cover)">
+                                <span class="material-symbols-outlined text-base sm:text-lg" id="intro-fit-icon">fit_screen</span>
+                            </button>
+                            <span
+                                class="hidden sm:inline-block text-[9px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-1.5 py-0.5 rounded">4K
+                                ULTRA HD</span>
+                            <button type="button" onclick="toggleIntroFullscreen()"
+                                class="p-1 rounded-lg hover:bg-white/20 text-white transition-colors cursor-pointer"
+                                title="Fullscreen">
+                                <span class="material-symbols-outlined text-base sm:text-lg">fullscreen</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fast-Action Footer: Continue to Portal Directly -->
+                <div
+                    class="mt-3 sm:mt-4 pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div class="text-left w-full sm:w-auto">
+                        <p class="text-xs font-bold text-white" id="intro-cta-heading">Ready to enter AgroBridge?</p>
+                        <p class="text-[11px] text-white/70" id="intro-cta-sub">Select your portal to proceed
+                            immediately:</p>
+                    </div>
+                    <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                        <button type="button" onclick="selectRoleAndClose('farmer')"
+                            class="flex-1 sm:flex-initial flex items-center justify-center space-x-1.5 bg-tertiary-fixed text-primary px-3.5 sm:px-4 py-2 rounded-xl text-xs font-extrabold hover:bg-emerald-300 transition-all duration-200 shadow-md active:scale-95 cursor-pointer">
+                            <span class="material-symbols-outlined text-sm">agriculture</span>
+                            <span id="intro-btn-farmer">🌾 Enter as Farmer</span>
+                        </button>
+                        <button type="button" onclick="selectRoleAndClose('consumer')"
+                            class="flex-1 sm:flex-initial flex items-center justify-center space-x-1.5 bg-white/15 hover:bg-white/25 border border-white/20 text-white px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-md active:scale-95 cursor-pointer">
+                            <span class="material-symbols-outlined text-sm">shopping_basket</span>
+                            <span id="intro-btn-consumer">🛒 Enter as Consumer</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 1. Full-Height Desktop Layout (No Top Nav Bar) -->
     <main class="w-full flex-grow flex items-stretch">
         <div class="w-full grid grid-cols-1 lg:grid-cols-12 min-h-screen">
@@ -135,6 +351,13 @@
                     </div>
                     <!-- Telemetry & Verification Chips -->
                     <div class="flex flex-wrap items-center gap-2">
+                        <!-- Play Intro Video Button -->
+                        <button type="button" onclick="openIntroModal()"
+                            class="inline-flex items-center space-x-1.5 bg-emerald-500/25 hover:bg-emerald-500/40 border border-emerald-400/40 text-emerald-200 hover:text-white px-3.5 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md shadow-md transition-all duration-200 hover:scale-105 cursor-pointer">
+                            <span class="material-symbols-outlined text-base text-tertiary-fixed"
+                                style="font-variation-settings: 'FILL' 1;">smart_display</span>
+                            <span id="hero-watch-video-btn">Watch Intro Video</span>
+                        </button>
                         <div
                             class="inline-flex items-center space-x-2 bg-primary-container/85 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full shadow-md text-xs font-semibold text-tertiary-fixed">
                             <span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span>
@@ -454,10 +677,59 @@
             </div>
         </div>
     </footer>
-    <!-- Interactive State Script for Language & Dual-Role Switching -->
+    <!-- Interactive State Script for Language, Dual-Role Switching & Intro Video Window -->
     <script>
         let currentLang = 'en';
         let currentRole = 'farmer'; // 'farmer' or 'consumer'
+        let introFeatureIndex = 0;
+        let introFeatureTimer = null;
+
+        const introFeaturesList = {
+            en: [
+                {
+                    icon: 'currency_rupee',
+                    tag: 'DIRECT APMC & MANDI DISCOVERY',
+                    desc: 'Real-time MSP and mandi rates with zero middleman commissions.'
+                },
+                {
+                    icon: 'local_shipping',
+                    tag: '100% FARM TRACEABILITY',
+                    desc: 'Farm-fresh direct produce deliveries with ICAR-backed quality verification.'
+                },
+                {
+                    icon: 'eco',
+                    tag: 'AI CROP & WEATHER ADVISORY',
+                    desc: 'Precision farming alerts, digital soil health cards, and hyper-local forecasts.'
+                },
+                {
+                    icon: 'payments',
+                    tag: 'INSTANT GUARANTEED MSP PAYMENTS',
+                    desc: 'Direct-to-bank instant settlements for farmers via e-Kisan digital rails.'
+                }
+            ],
+            hi: [
+                {
+                    icon: 'currency_rupee',
+                    tag: 'सीधा मंडी भाव एवं एमएसपी',
+                    desc: 'बिना किसी बिचौलिए के वास्तविक समय पर पारदर्शी मंडी भाव और एमएसपी।'
+                },
+                {
+                    icon: 'local_shipping',
+                    tag: '100% शुद्ध एवं प्रमाणित उपज',
+                    desc: 'सीधे खेत से उपभोक्ता तक ताजा आपूर्ति और डिजिटल गुणवत्ता जांच।'
+                },
+                {
+                    icon: 'eco',
+                    tag: 'स्मार्ट फसल एवं मौसम सलाह',
+                    desc: 'भाकृअनुप आधारित उन्नत कृषि सलाह, मृदा स्वास्थ्य कार्ड एवं सटीक मौसम अलर्ट।'
+                },
+                {
+                    icon: 'payments',
+                    tag: 'त्वरित डिजिटल एमएसपी भुगतान',
+                    desc: 'ई-किसान प्रणाली द्वारा सीधे किसान के बैंक खाते में पारदर्शी और त्वरित भुगतान।'
+                }
+            ]
+        };
 
         const content = {
             en: {
@@ -471,6 +743,7 @@
                 metric2Val: '100% Traceable',
                 metric3Label: 'Middleman Commission',
                 heroTrust: 'Secured with Government e-Kisan Authentication & DigiLocker',
+                heroWatchVideo: 'Watch Intro Video',
 
                 farmerTab: 'Farmer / किसान',
                 consumerTab: 'Consumer & Buyer / उपभोक्ता',
@@ -513,7 +786,20 @@
 
                 microcopy: 'AgroBridge is an Open Digital Agriculture & Direct Consumer Network compliant with ICAR & PM-KISAN standards.',
                 footerDept: 'Ministry of Agriculture & Farmers Welfare Integrated Interface',
-                footerLang: '22 Indian Languages Supported'
+                footerLang: '22 Indian Languages Supported',
+
+                // Video Modal Texts
+                introModalTitle: 'AgroBridge Platform Tour',
+                introModalBadge: 'Live Intro',
+                introModalSub: 'Direct Kisan-Mandi Network & 100% Traceable Consumer Hub',
+                introAudioUnmute: 'Unmute',
+                introAudioMute: 'Mute',
+                introSkipText: 'Skip to Portal',
+                introUnmutePrompt: 'Tap for sound 🔊',
+                introCtaHeading: 'Ready to enter AgroBridge?',
+                introCtaSub: 'Select your portal to proceed immediately:',
+                introBtnFarmer: '🌾 Enter as Farmer',
+                introBtnConsumer: '🛒 Enter as Consumer'
             },
             hi: {
                 heroTelemetry: 'सक्रिय एग्री-स्टैक एवं उपभोक्ता केंद्र',
@@ -526,6 +812,7 @@
                 metric2Val: '100% प्रमाणित',
                 metric3Label: 'बिचौलिया कमीशन',
                 heroTrust: 'सरकारी ई-किसान प्रमाणीकरण एवं डिजिलॉकर द्वारा सुरक्षित',
+                heroWatchVideo: 'परिचय वीडियो देखें',
 
                 farmerTab: 'किसान / Farmer',
                 consumerTab: 'उपभोक्ता एवं खरीदार',
@@ -568,7 +855,20 @@
 
                 microcopy: 'एग्रोब्रिज एक खुला डिजिटल कृषि एवं उपभोक्ता मंच है जो भाकृअनुप एवं पीएम-किसान मानकों के अनुरूप है।',
                 footerDept: 'कृषि एवं किसान कल्याण मंत्रालय एकीकृत इंटरफेस',
-                footerLang: '22 भारतीय भाषाओं में सहायता उपलब्ध'
+                footerLang: '22 भारतीय भाषाओं में सहायता उपलब्ध',
+
+                // Video Modal Texts
+                introModalTitle: 'एग्रोब्रिज मंच परिचय यात्रा',
+                introModalBadge: 'परिचय वीडियो',
+                introModalSub: 'सीधा किसान-मंडी नेटवर्क एवं 100% प्रमाणित उपभोक्ता हब',
+                introAudioUnmute: 'ध्वनि चालू करें',
+                introAudioMute: 'ध्वनि बंद करें',
+                introSkipText: 'पोर्टल पर जाएं',
+                introUnmutePrompt: 'ध्वनि के लिए स्पर्श करें 🔊',
+                introCtaHeading: 'क्या आप एग्रोब्रिज शुरू करने के लिए तैयार हैं?',
+                introCtaSub: 'तुरंत प्रवेश करने के लिए अपना पोर्टल चुनें:',
+                introBtnFarmer: '🌾 किसान के रूप में प्रवेश करें',
+                introBtnConsumer: '🛒 उपभोक्ता के रूप में प्रवेश करें'
             }
         };
 
@@ -594,6 +894,31 @@
             document.getElementById('metric-2-val').textContent = t.metric2Val;
             document.getElementById('metric-3-label').textContent = t.metric3Label;
             document.getElementById('hero-trust-label').textContent = t.heroTrust;
+            const watchBtn = document.getElementById('hero-watch-video-btn');
+            if (watchBtn) watchBtn.textContent = t.heroWatchVideo;
+
+            // Video Modal Text Updates
+            if (document.getElementById('intro-modal-title')) {
+                document.getElementById('intro-modal-title').textContent = t.introModalTitle;
+                document.getElementById('intro-modal-badge').textContent = t.introModalBadge;
+                document.getElementById('intro-modal-sub').textContent = t.introModalSub;
+                document.getElementById('intro-skip-text').textContent = t.introSkipText;
+                document.getElementById('intro-unmute-prompt-text').textContent = t.introUnmutePrompt;
+                document.getElementById('intro-cta-heading').textContent = t.introCtaHeading;
+                document.getElementById('intro-cta-sub').textContent = t.introCtaSub;
+                document.getElementById('intro-btn-farmer').textContent = t.introBtnFarmer;
+                document.getElementById('intro-btn-consumer').textContent = t.introBtnConsumer;
+            }
+
+            // Update Audio Button Label
+            const video = document.getElementById('intro-video');
+            const audioLabel = document.getElementById('intro-audio-label');
+            if (audioLabel && video) {
+                audioLabel.textContent = video.muted ? t.introAudioUnmute : t.introAudioMute;
+            }
+
+            // Refresh current feature card in active language
+            updateIntroFeatureCard();
 
             // Tabs
             document.getElementById('tab-farmer-label').textContent = t.farmerTab;
@@ -721,9 +1046,254 @@
             }, 3500);
         }
 
-        // Initialize on load
+        /* -------------------------------------------------------------
+           INTRODUCTORY VIDEO WINDOW MODAL CONTROLLERS & ANIMATIONS
+        ------------------------------------------------------------- */
+        function openIntroModal() {
+            const modal = document.getElementById('intro-video-modal');
+            const card = document.getElementById('intro-modal-card');
+            const video = document.getElementById('intro-video');
+
+            if (!modal) return;
+
+            modal.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'visible');
+            if (card) {
+                card.classList.remove('scale-95', 'opacity-0');
+                card.classList.add('scale-100', 'opacity-100');
+            }
+
+            if (video) {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        updatePlayIcons(true);
+                    }).catch(error => {
+                        console.log("Autoplay was prevented, awaiting user interaction:", error);
+                        updatePlayIcons(false);
+                    });
+                }
+            }
+
+            startFeatureTicker();
+        }
+
+        function closeIntroModal() {
+            const modal = document.getElementById('intro-video-modal');
+            const card = document.getElementById('intro-modal-card');
+            const video = document.getElementById('intro-video');
+
+            if (!modal) return;
+
+            if (card) {
+                card.classList.remove('scale-100', 'opacity-100');
+                card.classList.add('scale-95', 'opacity-0');
+            }
+
+            setTimeout(() => {
+                modal.classList.remove('opacity-100', 'visible');
+                modal.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+            }, 250);
+
+            if (video) {
+                video.pause();
+                updatePlayIcons(false);
+            }
+
+            clearInterval(introFeatureTimer);
+        }
+
+        function handleBackdropClick(event) {
+            if (event.target.id === 'intro-video-modal') {
+                closeIntroModal();
+            }
+        }
+
+        function selectRoleAndClose(role) {
+            setRole(role);
+            closeIntroModal();
+        }
+
+        function toggleIntroPlay() {
+            const video = document.getElementById('intro-video');
+            if (!video) return;
+
+            if (video.paused || video.ended) {
+                video.play();
+                updatePlayIcons(true);
+            } else {
+                video.pause();
+                updatePlayIcons(false);
+            }
+        }
+
+        function updatePlayIcons(isPlaying) {
+            const barIcon = document.getElementById('intro-bar-play-icon');
+            const centerIcon = document.getElementById('intro-center-play-icon');
+
+            if (barIcon) {
+                barIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
+            }
+            if (centerIcon) {
+                centerIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
+            }
+        }
+
+        function toggleIntroAudio() {
+            const video = document.getElementById('intro-video');
+            const audioBtnIcon = document.getElementById('intro-audio-icon');
+            const audioBtnLabel = document.getElementById('intro-audio-label');
+            const barAudioIcon = document.getElementById('intro-bar-audio-icon');
+            const unmutePrompt = document.getElementById('intro-unmute-prompt');
+
+            if (!video) return;
+
+            video.muted = !video.muted;
+            const t = content[currentLang];
+
+            if (video.muted) {
+                if (audioBtnIcon) audioBtnIcon.textContent = 'volume_off';
+                if (barAudioIcon) barAudioIcon.textContent = 'volume_off';
+                if (audioBtnLabel) audioBtnLabel.textContent = t.introAudioUnmute;
+            } else {
+                if (audioBtnIcon) audioBtnIcon.textContent = 'volume_up';
+                if (barAudioIcon) barAudioIcon.textContent = 'volume_up';
+                if (audioBtnLabel) audioBtnLabel.textContent = t.introAudioMute;
+                if (unmutePrompt) {
+                    unmutePrompt.classList.add('opacity-0', 'pointer-events-none');
+                    setTimeout(() => unmutePrompt.style.display = 'none', 300);
+                }
+            }
+        }
+
+        function seekIntroVideo(event) {
+            const video = document.getElementById('intro-video');
+            if (!video || !video.duration) return;
+
+            const rect = event.currentTarget.getBoundingClientRect();
+            const clickPos = (event.clientX - rect.left) / rect.width;
+            video.currentTime = clickPos * video.duration;
+        }
+
+        function toggleIntroFullscreen() {
+            const video = document.getElementById('intro-video');
+            if (!video) return;
+
+            if (!document.fullscreenElement) {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        function formatVideoTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        function updateIntroFeatureCard() {
+            const list = introFeaturesList[currentLang] || introFeaturesList.en;
+            const item = list[introFeatureIndex % list.length];
+            const card = document.getElementById('intro-feature-card');
+            const icon = document.getElementById('intro-feature-icon');
+            const tag = document.getElementById('intro-feature-tag');
+            const desc = document.getElementById('intro-feature-desc');
+
+            if (!card || !item) return;
+
+            card.classList.add('opacity-0', 'translate-y-2');
+            setTimeout(() => {
+                if (icon) icon.textContent = item.icon;
+                if (tag) tag.textContent = item.tag;
+                if (desc) desc.textContent = item.desc;
+                card.classList.remove('opacity-0', 'translate-y-2');
+            }, 250);
+        }
+
+        function startFeatureTicker() {
+            clearInterval(introFeatureTimer);
+            updateIntroFeatureCard();
+            introFeatureTimer = setInterval(() => {
+                introFeatureIndex = (introFeatureIndex + 1) % 4;
+                updateIntroFeatureCard();
+            }, 4500);
+        }
+
+        function toggleVideoFit() {
+            const video = document.getElementById('intro-video');
+            const fitIcon = document.getElementById('intro-fit-icon');
+            if (!video) return;
+
+            if (video.classList.contains('object-contain')) {
+                video.classList.remove('object-contain');
+                video.classList.add('object-cover');
+                if (fitIcon) fitIcon.textContent = 'crop_free';
+            } else {
+                video.classList.remove('object-cover');
+                video.classList.add('object-contain');
+                if (fitIcon) fitIcon.textContent = 'fit_screen';
+            }
+        }
+
+        // Keyboard navigation (ESC to close intro modal)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('intro-video-modal');
+                if (modal && !modal.classList.contains('invisible')) {
+                    closeIntroModal();
+                }
+            }
+        });
+
+        // Initialize on load & show transparent intro video window first
         document.addEventListener('DOMContentLoaded', () => {
             updateView();
+
+            // Video timeupdate hook for smooth progress bar & time counter
+            const video = document.getElementById('intro-video');
+            const progressBar = document.getElementById('intro-progress-bar');
+            const timeDisplay = document.getElementById('intro-time-display');
+            const videoContainer = document.getElementById('intro-video-container');
+
+            if (video) {
+                // Auto-fit container aspect ratio dynamically to match video's actual resolution
+                video.addEventListener('loadedmetadata', () => {
+                    if (videoContainer && video.videoWidth && video.videoHeight) {
+                        const aspect = (video.videoWidth / video.videoHeight);
+                        if (aspect > 0) {
+                            videoContainer.style.aspectRatio = `${video.videoWidth} / ${video.videoHeight}`;
+                        }
+                    }
+                });
+
+                video.addEventListener('timeupdate', () => {
+                    if (video.duration && progressBar) {
+                        const pct = (video.currentTime / video.duration) * 100;
+                        progressBar.style.width = pct + '%';
+                    }
+                    if (timeDisplay) {
+                        const cur = formatVideoTime(video.currentTime);
+                        const dur = formatVideoTime(video.duration || 30);
+                        timeDisplay.textContent = `${cur} / ${dur}`;
+                    }
+                });
+
+                video.addEventListener('play', () => updatePlayIcons(true));
+                video.addEventListener('pause', () => updatePlayIcons(false));
+            }
+
+            // AUTO-LAUNCH TRANSPARENT INTRO VIDEO WINDOW FIRST
+            setTimeout(() => {
+                openIntroModal();
+            }, 300);
         });
     </script>
 </body>
